@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqufma44ebh1q"]
+
+[ext_resource type="Texture2D" uid="uid://bd03bb8sfhaib" path="res://UI/Assets/StartButton.png" id="1_1sueu"]
+[ext_resource type="Texture2D" uid="uid://bfol3crva52yb" path="res://UI/Assets/Background.png" id="1_bc4n8"]
+[ext_resource type="Texture2D" uid="uid://dic8c7tlh6dgq" path="res://UI/Assets/ExitButton.png" id="2_f4550"]
+[ext_resource type="Script" path="res://UI/StartButton.gd" id="2_yt5mt"]
+[ext_resource type="Script" path="res://UI/ExitButton.gd" id="4_5vs0h"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(28.8003, 16.3511)
+color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 326)
+texture = ExtResource("1_bc4n8")
+
+[node name="StartButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 435.0
+offset_top = 270.0
+offset_right = 691.0
+offset_bottom = 398.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("1_1sueu")
+script = ExtResource("2_yt5mt")
+
+[node name="ExitButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 436.0
+offset_top = 421.0
+offset_right = 692.0
+offset_bottom = 549.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("2_f4550")
+script = ExtResource("4_5vs0h")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
+[connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_pressed"]
