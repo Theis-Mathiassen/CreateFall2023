@@ -12,22 +12,15 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = -2.0
-offset_right = 1.0
-offset_bottom = -2.0
+offset_right = 1112.0
+offset_bottom = 608.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(28.8003, 16.3511)
-color = Color(0, 0, 0, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(576, 326)
 texture = ExtResource("1_bc4n8")
 
 [node name="StartButton" type="TextureButton" parent="."]
