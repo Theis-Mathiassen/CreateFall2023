@@ -19,9 +19,19 @@ config/icon="res://icon.svg"
 
 Global="*res://Global/Global.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="CreateFall2023"
+
+[gui]
+
+theme/custom_font="res://Font/FontVariation.tres"
 
 [input]
 
