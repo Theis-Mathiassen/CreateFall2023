@@ -7,4 +7,5 @@
 [node name="Cave" parent="." instance=ExtResource("1_4b4l2")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.164706, 0.113725, 0.0588235, 1)
