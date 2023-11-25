@@ -84,11 +84,6 @@ func player_movement(delta):
 	if Input.is_action_just_released("Pickaxe"):
 		mining = false
 	
-	if velocity.length() > 1:
-		if (running.playing == false):
-			pass
-			#running.play()
-			#print("Run!")
 	else:
 		pass
 		#running.stop()
