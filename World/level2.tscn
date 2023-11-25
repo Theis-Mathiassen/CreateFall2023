@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4e6akwqys4p7"]
+[gd_scene load_steps=9 format=3 uid="uid://c4e6akwqys4p7"]
 
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ni4hg"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="2_buv0e"]
 [ext_resource type="Texture2D" uid="uid://cuugp74vbg5nb" path="res://World/Assets/tileset.png" id="3_rpm5t"]
 [ext_resource type="Texture2D" uid="uid://gh5b5tojl00g" path="res://UI/Assets/light_texture.png" id="4_lynm2"]
 [ext_resource type="PackedScene" uid="uid://d04d0f55uva31" path="res://World/minecart.tscn" id="5_n00wo"]
+[ext_resource type="PackedScene" uid="uid://de2v1quc4h63b" path="res://World/Gold/Gold.tscn" id="6_sp46n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
 texture = ExtResource("3_rpm5t")
@@ -201,4 +202,8 @@ texture_scale = 0.5
 position = Vector2(376.232, 549.89)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.164706, 0.113725, 0.0588235, 1)
+
+[node name="Gold" parent="." instance=ExtResource("6_sp46n")]
+position = Vector2(366.218, 582.883)

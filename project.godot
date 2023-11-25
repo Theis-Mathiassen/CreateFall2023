@@ -15,6 +15,10 @@ run/main_scene="res://World/level2.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://Global/Global.gd"
+
 [dotnet]
 
 project/assembly_name="CreateFall2023"
