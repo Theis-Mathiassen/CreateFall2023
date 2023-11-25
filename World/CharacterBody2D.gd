@@ -18,7 +18,7 @@ var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
 var attack_cooldown = true
 var player_alive = true
-
+var attack_in_progress = false
 
 var input = Vector2.ZERO
 
@@ -30,11 +30,12 @@ var dynamite = preload("res://Throwables/dynamite.tscn")
 func _physics_process(delta):
 	player_movement(delta)
 	enemy_attack()
+	attack()
 	
-	if health <= 0 :
+	if Global.player_health <= 0 :
 		player_alive = false 
-		health = 0
-		print("deadge")
+		Global.player_health = 0
+		self.queue_free()
 		# end screen
 
 func get_input():
@@ -64,6 +65,10 @@ func player_movement(delta):
 			mining = true
 			animation_player.play("Pickaxe")
 			pickaxe_collision.disabled = false
+			
+		elif Input.is_action_pressed("Attack") :
+			attack_in_progress = true
+			animation_player.play("Attack")
 			
 		else:
 			mining = false
@@ -127,11 +132,24 @@ func enemy_attack():
 		Global.player_health = Global.player_health - 2
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
-		print(Global.player_health)
+		#print(Global.player_health)
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
 
+func attack():
+	if Input.is_action_just_pressed("Attack"):
+		Global.player_current_attack = true
+		attack_in_progress = true
+		$deal_attack_cooldown.start()
+	
+	
+
+func _on_deal_attack_cooldown_timeout():
+	$deal_attack_cooldown.stop()
+	Global.player_current_attack = false
+	attack_in_progress = false
 
 func player():
 	pass
+

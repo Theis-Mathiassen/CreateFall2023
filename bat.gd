@@ -9,8 +9,10 @@ extends CharacterBody2D
 
 var player_chase = false
 var player_seen = false
+var can_take_damage = true
 
 var player_in_attack_range = false
+
 
 func _physics_process(delta):
 	var dir = player.position - position
@@ -27,6 +29,7 @@ func _physics_process(delta):
 		#	$AnimatedSprite2D.play("idle1")
 	
 	move_and_slide()
+	deal_damage()
 	
 
 
@@ -52,6 +55,16 @@ func _on_enemy_hitbox_body_exited(body):
 		
 func deal_damage() :
 	if player_in_attack_range and Global.player_current_attack == true :
-		health = health - Global.attack_damage
+		if can_take_damage:
+			health = health - Global.attack_damage
+			$take_damage_cooldown.start()
+			can_take_damage = false
+			#print("Bat health = ", health)
+			if health <= 0:
+				self.queue_free()
+
+func _on_take_damage_cooldown_timeout():
+	can_take_damage = true
+
 func enemy():
 	pass
