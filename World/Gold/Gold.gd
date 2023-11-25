@@ -17,7 +17,7 @@ func _process(delta):
 
 func _on_area_2d_body_entered(body: Player):
 	if body.mining:
-		get_parent().create_timer(5).connect(test)
+
 		
 		animation_player.play("Destroyed")
 		print(body)

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ketq4"]
 [ext_resource type="Texture2D" uid="uid://dyss0leghc83c" path="res://World/Assets/TileMap.png" id="2_7dexn"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="3_5agi3"]
-[ext_resource type="PackedScene" uid="uid://wmu6oqv7amit" path="res://Shared/Components/cave_entrance.tscn" id="4_a7e8r"]
+[ext_resource type="PackedScene" path="res://Shared/Components/cave_entrance.tscn" id="4_a7e8r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xm181"]
 texture = ExtResource("2_7dexn")
@@ -40,7 +40,7 @@ texture = ExtResource("2_7dexn")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xm181")
 
-[node name="Main" type="Node2D"]
+[node name="Main2" type="Node2D"]
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-1, -2)
