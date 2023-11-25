@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ni4hg"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="2_buv0e"]
-[ext_resource type="Texture2D" uid="uid://bskbckryebwv" path="res://World/Assets/tileset.png" id="3_rpm5t"]
+[ext_resource type="Texture2D" uid="uid://cuugp74vbg5nb" path="res://World/Assets/tileset.png" id="3_rpm5t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
 texture = ExtResource("3_rpm5t")
@@ -55,10 +55,6 @@ sources/0 = SubResource("TileSetAtlasSource_jwjnr")
 position = Vector2(-1, -2)
 texture = ExtResource("1_ni4hg")
 
-[node name="player" parent="." instance=ExtResource("2_buv0e")]
-position = Vector2(302, 556)
-scale = Vector2(0.5, 0.5)
-
 [node name="TileMap2" type="TileMap" parent="."]
 texture_filter = 1
 tile_set = SubResource("TileSet_7247w")
@@ -80,3 +76,7 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array()
+
+[node name="player" parent="." instance=ExtResource("2_buv0e")]
+position = Vector2(344.618, 545.466)
+scale = Vector2(0.5, 0.5)

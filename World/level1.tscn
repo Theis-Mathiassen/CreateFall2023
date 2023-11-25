@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://di6510tqlcwom"]
+[gd_scene load_steps=6 format=3 uid="uid://di6510tqlcwom"]
 
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ketq4"]
 [ext_resource type="Texture2D" uid="uid://dyss0leghc83c" path="res://World/Assets/TileMap.png" id="2_7dexn"]
@@ -17,7 +17,6 @@ texture = ExtResource("2_7dexn")
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
-
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
@@ -32,7 +31,6 @@ texture = ExtResource("2_7dexn")
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
-
 3:1/0 = 0
 3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:1/0/physics_layer_0/angular_velocity = 0.0
