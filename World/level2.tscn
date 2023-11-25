@@ -197,9 +197,9 @@ shadow_filter_smooth = 3.0
 texture = ExtResource("4_lynm2")
 texture_scale = 0.5
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
-color = Color(0.184314, 0.113725, 0.109804, 1)
-
 [node name="Minecart" parent="." instance=ExtResource("5_n00wo")]
 position = Vector2(376.232, 549.89)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+scale = Vector2(1, 1)
+color = Color(0.164706, 0.113725, 0.0588235, 1)
