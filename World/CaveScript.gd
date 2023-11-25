@@ -1,8 +1,12 @@
 extends Node2D
+@onready
+var tiles : TileMap = $Floor
+@onready var player = $player
 
 var border = 1
-var map_size = Vector2(64, 64)
+var map_size = Vector2i(64, 64)
 var map_info = []
+var tile_size
 
 var number_rooms = 0
 var tiles_in_rooms = []
@@ -19,14 +23,21 @@ var altitude_noise_layer = {}
 
 @export var cut_off : float = 0.8
 
-@onready
-var tiles : TileMap = $Floor
 
 
 var total_time = 0
 
+
+# Variables for placing stuff in map
+var entrance = Vector2i(0,0)
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	tile_size = Vector2i(tiles.tile_set.tile_size.x, tiles.tile_set.tile_size.y)
+	
 	for x in range(map_size.x):
 		map_info.append([])
 		for y in range(map_size.y):
@@ -36,6 +47,9 @@ func _ready():
 	noise.seed = noise_seed
 	
 	GenMap()
+	draw_map()
+	print(entrance)
+	player.global_position=Vector2(entrance.x,entrance.y)
 	
 	
 
@@ -44,10 +58,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	total_time += delta
-	if (total_time > 10):
+	if (total_time > 1000):
 		print(total_time)
 		noise.seed = randi_range(0, 10000)
 		GenMap()
+		draw_map()
 		total_time = 0
 	pass
 
@@ -79,14 +94,119 @@ func GenMap ():
 	
 	
 
-
-func connect_rooms():
-	var room_index_map = find_all_rooms()
+func draw_map():
 	for x in map_size.x:
 		for y in map_size.y:
-			if room_index_map[x][y] != -1:
-				var cur_room = room_index_map[x][y] % 8
-				tiles.set_cell(0,Vector2i(x,y),0, Vector2i(cur_room % 4,cur_room /4), 0)
+			#Border
+			if x == 0 || x == map_size.x-1 || y == 0 || y == map_size.y-1:
+				tiles.set_cell(0,Vector2i(x,y),0, Vector2i(7+(x%2), y%2), 0)
+			else:
+				if (map_info[x][y] == 0):
+					if (map_info[x+1][y] == 0):
+						if (map_info[x-1][y] == 0):
+							if (map_info[x][y-1] == 0):
+								tiles.set_cell(0,Vector2i(x,y),0, Vector2i(4+(x%2), 2+y%2), 0)
+							elif (map_info[x][y-1] == 1):
+								tiles.set_cell(0,Vector2i(x,y),0, Vector2i(4+(x%2), 1), 0)
+						elif (map_info[x-1][y] == 1):
+							if (map_info[x][y-1] == 0):
+								tiles.set_cell(0,Vector2i(x,y),0, Vector2i(4+(x%2), 2+y%2), 0)
+							elif (map_info[x][y-1] == 1):
+								tiles.set_cell(0,Vector2i(x,y),0, Vector2i(3, 1), 0)
+					elif (map_info[x+1][y] == 1):
+						if (map_info[x-1][y] == 0):
+							if (map_info[x][y-1] == 0):
+								tiles.set_cell(0,Vector2i(x,y),0, Vector2i(4+(x%2), 2+y%2), 0)
+							elif (map_info[x][y-1] == 1):
+								tiles.set_cell(0,Vector2i(x,y),0, Vector2i(6, 1), 0)
+						elif (map_info[x-1][y] == 1):
+							if (map_info[x][y-1] == 0):
+								tiles.set_cell(0,Vector2i(x,y),0, Vector2i(4+(x%2), 2+y%2), 0)
+							elif (map_info[x][y-1] == 1):
+								#Can't exist
+								tiles.set_cell(0,Vector2i(x,y),0, Vector2i(7+(x%2), y%2), 0)
+				elif (map_info[x][y] == 1):
+					if (map_info[x+1][y] == 0):
+						if (map_info[x-1][y] == 0):
+							if (map_info[x][y+1] == 0):
+								if (map_info[x][y-1] == 0):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(5, 0), 0)
+								elif (map_info[x][y-1] == 1):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(5, 0), 0)
+							elif (map_info[x][y+1] == 1):
+								if (map_info[x][y-1] == 0):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(5, 0), 0)
+								elif (map_info[x][y-1] == 1):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(5, 0), 0)
+						elif (map_info[x-1][y] == 1):
+							if (map_info[x][y+1] == 0):
+								if (map_info[x][y-1] == 0):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(1, 3), 0)
+								elif (map_info[x][y-1] == 1):								
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(2, 1), 0)
+							elif (map_info[x][y+1] == 1):
+								if (map_info[x][y-1] == 0):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(7, 0), 0)
+								elif (map_info[x][y-1] == 1):
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(1, 3), 0)
+					elif (map_info[x+1][y] == 1):
+						if (map_info[x-1][y] == 0):
+							if (map_info[x][y+1] == 0):
+								if (map_info[x][y-1] == 0):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(10, 3), 0)
+								elif (map_info[x][y-1] == 1):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(5, 0), 0)
+							elif (map_info[x][y+1] == 1):
+								if (map_info[x][y-1] == 0):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(2, 0), 0)
+								elif (map_info[x][y-1] == 1):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(10, 3), 0)
+						elif (map_info[x-1][y] == 1):
+							if (map_info[x][y+1] == 0):
+								if (map_info[x][y-1] == 0):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(4+x%2, 0), 0)
+								elif (map_info[x][y-1] == 1):								
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(4+x%2, 0), 0)
+							elif (map_info[x][y+1] == 1):
+								if (map_info[x][y-1] == 0):
+									#Can't exist
+									tiles.set_cell(0,Vector2i(x,y),0, Vector2i(2+x%2, 4), 0)
+								elif (map_info[x][y-1] == 1):
+									if (map_info[x+1][y+1] == 0):
+										tiles.set_cell(0,Vector2i(x,y),0, Vector2i(8, 4), 0)
+									elif (map_info[x+1][y-1] == 0):
+										tiles.set_cell(0,Vector2i(x,y),0, Vector2i(1, 4), 0)
+									elif (map_info[x-1][y+1] == 0):
+										tiles.set_cell(0,Vector2i(x,y),0, Vector2i(7, 4), 0)
+									elif (map_info[x-1][y-1] == 0):
+										tiles.set_cell(0,Vector2i(x,y),0, Vector2i(4, 4), 0)
+									else:
+										tiles.set_cell(0,Vector2i(x,y),0, Vector2i(0, 5), 0)
+							
+					
+			
+
+
+func connect_rooms():
+	for x in map_size.x:
+		for y in map_size.y:
+			if !(x == 0 || x == map_size.x-1 || y == 0 || y == map_size.y-1):
+				if (map_info[x+1][y] == 0 && map_info[x-1][y] == 0):
+					map_info[x][y] = 0
+				if (map_info[x][y+1] == 0 && map_info[x][y-1] == 0):
+					map_info[x][y] = 0
+	var room_index_map = find_all_rooms()
 	
 
 func find_all_rooms():
@@ -126,4 +246,6 @@ func expand_room(room_id_map, x, y, id):
 		if (map_info[next_pos.x][next_pos.y] == 0 && room_id_map[next_pos.x][next_pos.y] != id):
 			queue.append(next_pos)
 	tiles_in_rooms.append(room_size)
+	if (tiles_in_rooms.max() == room_size):
+		entrance = Vector2i(x * tile_size.x,y*tile_size.y)
 	
