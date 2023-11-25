@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://pmk66mqxt7jm"]
+[gd_scene load_steps=13 format=3 uid="uid://mu8lkrp64hhk"]
 
 [ext_resource type="Script" path="res://bat.gd" id="1_757pl"]
-[ext_resource type="Texture2D" uid="uid://dhdi3tvu0f04m" path="res://World/Assets/Bat.png" id="1_xecur"]
-[ext_resource type="Texture2D" uid="uid://debd3jaam4yha" path="res://World/Assets/BatFlying.png" id="2_sgnok"]
+[ext_resource type="Texture2D" uid="uid://bepngdym0oro8" path="res://World/Assets/Bat.png" id="1_xecur"]
+[ext_resource type="Texture2D" uid="uid://b4dvf8jdgrkpy" path="res://World/Assets/BatFlying.png" id="2_sgnok"]
+[ext_resource type="AudioStream" uid="uid://cpmt4f1ef2rg3" path="res://Sound/Effects/Items/explosion.mp3" id="4_sxink"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tukc"]
 atlas = ExtResource("1_xecur")
@@ -82,6 +83,11 @@ shape = SubResource("CircleShape2D_60cx0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_hitbox"]
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_h16mw")
+
+[node name="Whiskey" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_sxink")
+volume_db = -7.268
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

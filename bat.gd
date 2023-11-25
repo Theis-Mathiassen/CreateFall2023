@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var friction = 700
 @export var player : Node2D
 
+@onready var drink = $Whiskey
+
 var player_chase = false
 var player_seen = false
 
@@ -32,6 +34,7 @@ func _physics_process(delta):
 
 func _on_detection_area_body_entered(body):
 	player_chase = true
+	drink.play()
 	if player_seen == false :
 		$AnimatedSprite2D.play("idle2")
 		await get_tree().create_timer(1).timeout
