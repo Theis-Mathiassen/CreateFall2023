@@ -257,17 +257,18 @@ func expand_room(room_id_map, x, y, id):
 			for yi in map_size.y:
 				if (room_id_map[xi][yi] == id && map_info[xi+1][yi] == 0 && map_info[xi-1][yi] == 0 && map_info[xi][yi+1] == 0 && map_info[xi][yi-1] == 0):
 					entrance = Vector2i(xi * tile_size.x,yi*tile_size.y)
+					return
 	
 
 
 
 func place_items():
 	#Gold
-	for x in map_size.x:
-		for y in map_size.y:
-			if (map_info[x][y] == 0 && randf() > gold_ratio):
-				var gold_instance = gold.instantiate()
-				gold_instance.global_position = Vector2(x * tile_size.x,y*tile_size.y)
-				add_child(gold_instance)
+	#for x in map_size.x:
+	#	for y in map_size.y:
+	#		if (map_info[x][y] == 0 && randf() > gold_ratio):
+	#			var gold_instance = gold.instantiate()
+	#			gold_instance.global_position = Vector2(x * tile_size.x,y*tile_size.y)
+	#			add_child(gold_instance)
 	pass
 
