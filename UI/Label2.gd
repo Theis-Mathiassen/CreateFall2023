@@ -1,6 +1,7 @@
 extends Label
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -8,7 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.text = "Collected " + str(Global.total_player_gold)
+	self.text = "out of " + str(Global.gold_quota) + " gold"
 	pass
-
-
