@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyo8t3yepu4hg"]
+
+[ext_resource type="Script" path="res://Shared/Components/whiskey.gd" id="1_bp01i"]
+[ext_resource type="Texture2D" uid="uid://blfflods4wjm2" path="res://World/Assets/Whiskey.png" id="1_q6mf7"]
+[ext_resource type="FontVariation" uid="uid://dyn3foi5ruqiw" path="res://Font/FontVariation.tres" id="3_340no"]
+[ext_resource type="AudioStream" uid="uid://cuboik1md8fc5" path="res://Sound/Effects/Items/DrinkWhiskey.mp3" id="4_7vxl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qpxn"]
+size = Vector2(16, 24)
+
+[node name="Whiskey" type="Area2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_bp01i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q6mf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_2qpxn")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 2
+offset_left = -16.6667
+offset_top = 13.3333
+offset_right = 16.3333
+offset_bottom = 36.3333
+theme_override_fonts/font = ExtResource("3_340no")
+theme_override_font_sizes/font_size = 10
+text = "Whiskey"
+
+[node name="Label" type="Label" parent="Label"]
+texture_filter = 2
+offset_left = 6.66667
+offset_top = 13.3333
+offset_right = 39.6667
+offset_bottom = 36.3333
+theme_override_colors/font_color = Color(0, 0.847059, 0, 1)
+theme_override_fonts/font = ExtResource("3_340no")
+theme_override_font_sizes/font_size = 10
+text = "+hp"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7vxl0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

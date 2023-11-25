@@ -33,6 +33,7 @@ var dynamite = preload("res://Throwables/dynamite.tscn")
 func _physics_process(delta):
 	player_movement(delta)
 	enemy_attack()
+	update_health()
 	
 	if Global.player_health <= 0 :
 		player_alive = false 
@@ -147,3 +148,18 @@ func _on_attack_cooldown_timeout():
 
 func player():
 	pass
+
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = Global.player_health
+	
+	if Global.player_health >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+		
+	if Global.player_health < 0:
+		Global.player_health = 0
+		
+		
+

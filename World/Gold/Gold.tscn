@@ -147,5 +147,7 @@ unique_name_in_owner = true
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_inwc4")
 
+[node name="MiningTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
