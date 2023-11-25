@@ -34,10 +34,10 @@ func player_movement(delta):
 	# positive or negative 1 for x and y.
 	input = get_input()
 	
-	if input.x == 1:
+	if input.x > 0.5:
 		icon.scale.x = 1
 		animation_player.play("Running")
-	elif input.x == -1:
+	elif input.x < -0.5:
 		icon.scale.x = -1
 		animation_player.play("Running")
 		
@@ -46,16 +46,17 @@ func player_movement(delta):
 	elif input.y == -1:
 		animation_player.play("RunningUp")
 		
-		
-	elif Input.is_action_pressed("Pickaxe"):
-		mining = true
-		animation_player.play("Pickaxe")
-		pickaxe_collision.disabled = false
-		
 	else:
-		animation_player.play("Idle")
-	
-	pickaxe_collision.disabled = true
+		if Input.is_action_pressed("Pickaxe"):
+			mining = true
+			animation_player.play("Pickaxe")
+			pickaxe_collision.disabled = false
+			
+		else:
+			mining = false
+			animation_player.play("Idle")
+		
+		pickaxe_collision.disabled = true
 	
 	if Input.is_action_just_released("Pickaxe"):
 		mining = false
