@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var max_speed = 600
-@export var friction = 1000
+@export var max_speed = 150
+@export var friction = 700
 @export var acceleration = 2500
 
 #@onready var animated_sprite_2d = $AnimatedSprite2D
