@@ -5,7 +5,7 @@ var player :Player
 var touched_by_player:bool = false
 var Start_count = 100.0
 var count = Start_count
-var original_scale = Vector2(self.scale.x, self.scale.y)
+@onready var original_scale = Vector2(self.scale.x, self.scale.y)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
