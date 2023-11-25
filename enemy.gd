@@ -21,4 +21,8 @@ func make_path() -> void:
 
 func _on_timer_timeout():
 	make_path()
+	
+
+func enemy():
+	pass
 
