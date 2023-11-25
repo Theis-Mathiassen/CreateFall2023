@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://wmu6oqv7amit" path="res://Shared/Components/cave_entrance.tscn" id="5_eklv8"]
 [ext_resource type="PackedScene" uid="uid://d04d0f55uva31" path="res://World/minecart.tscn" id="5_n00wo"]
 [ext_resource type="PackedScene" uid="uid://qbsnniqv085h" path="res://World/standing_light.tscn" id="5_nbqpy"]
-[ext_resource type="PackedScene" uid="uid://b7d86ei0ty5an" path="res://UI/TopBar.tscn" id="8_pmftk"]
+[ext_resource type="PackedScene" uid="uid://pmk66mqxt7jm" path="res://bat.tscn" id="8_xiclq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
 texture = ExtResource("3_rpm5t")
@@ -214,7 +214,8 @@ position = Vector2(375, 504)
 scale = Vector2(1, 0.999999)
 
 [node name="Gold" parent="." instance=ExtResource("4_s2apd")]
-position = Vector2(354.211, 583.883)
-scale = Vector2(0.5, 0.5)
+position = Vector2(336.2, 590.882)
 
-[node name="Node" parent="." instance=ExtResource("8_pmftk")]
+[node name="bat" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_xiclq")]
+position = Vector2(426, 525)
+player = NodePath("../player")

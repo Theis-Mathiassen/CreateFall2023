@@ -6,6 +6,8 @@
 scale = Vector2(1.5, 1.5)
 transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
 
+[node name="Node2D" type="Node2D" parent="."]
+
 [node name="Panel" type="Panel" parent="."]
 offset_right = 206.0
 offset_bottom = 84.0
@@ -26,3 +28,15 @@ offset_left = 42.6667
 offset_top = 186.667
 offset_right = 82.6667
 offset_bottom = 226.667
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.431373, 1, 0.0509804, 1)
+offset_left = 272.0
+offset_top = 21.3333
+offset_right = 442.0
+offset_bottom = 58.3333
+
+[connection signal="timeout" from="Timer" to="Panel/Label" method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dr24s6rc63ylv"]
+[gd_scene load_steps=18 format=3 uid="uid://dr24s6rc63ylv"]
 
 [ext_resource type="Script" path="res://World/CharacterBody2D.gd" id="1_6ne0w"]
 [ext_resource type="Texture2D" uid="uid://c8qc3alcxxjd5" path="res://Player/moleidle.png" id="2_tn8dn"]
@@ -332,6 +332,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxrhy"]
 size = Vector2(7, 16.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kewga"]
+radius = 20.0
+
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(-1, -2)
 scale = Vector2(0.5, 0.5)
@@ -382,3 +385,15 @@ shadow_filter = 1
 shadow_filter_smooth = 3.0
 texture = ExtResource("7_wc7gq")
 texture_scale = 0.5
+
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(8, 0)
+shape = SubResource("CircleShape2D_kewga")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
