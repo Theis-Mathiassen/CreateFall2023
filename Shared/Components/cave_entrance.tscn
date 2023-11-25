@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://wmu6oqv7amit"]
+
+[ext_resource type="Texture2D" uid="uid://bbc7me4w5o6k5" path="res://World/Assets/CaveEntry.png" id="1_c0a77"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qovc5"]
+
+[node name="Cave_Entrance" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_qovc5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_c0a77")
