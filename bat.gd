@@ -49,6 +49,9 @@ func _on_enemy_hitbox_body_entered(body):
 func _on_enemy_hitbox_body_exited(body):
 	if body.has_method("player") : 
 		player_in_attack_range = false
-
+		
+func deal_damage() :
+	if player_in_attack_range and Global.player_current_attack == true :
+		health = health - Global.attack_damage
 func enemy():
 	pass

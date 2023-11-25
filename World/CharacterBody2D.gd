@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var max_speed = 150
 @export var friction = 700
 @export var acceleration = 2500
-@export var health = 10
 @onready var icon = $Icon
 
 @onready var animation_player = $AnimationPlayer
@@ -125,10 +124,10 @@ func _on_player_hitbox_body_exited(body):
 
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown == true:
-		health = health - 2
+		Global.player_health = Global.player_health - 2
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
-		print(health)
+		print(Global.player_health)
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true
