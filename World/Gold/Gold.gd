@@ -15,9 +15,10 @@ func _process(delta):
 
 
 
-func _on_area_2d_body_entered(body):
-	animation_player.play("Destroyed")
-	print(body)
+func _on_area_2d_body_entered(body: Player):
+	if body.mining:
+		animation_player.play("Destroyed")
+		print(body)
 	pass # Replace with function body.
 
 
