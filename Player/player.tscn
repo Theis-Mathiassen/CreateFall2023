@@ -1,36 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr24s6rc63ylv"]
+[gd_scene load_steps=4 format=3 uid="uid://dr24s6rc63ylv"]
 
 [ext_resource type="Script" path="res://World/CharacterBody2D.gd" id="1_6ne0w"]
 [ext_resource type="Texture2D" uid="uid://jt0gnwhrdk0w" path="res://Player/mole.png" id="2_bsf47"]
-[ext_resource type="PackedScene" uid="uid://d2gjkfsux4who" path="res://Player/Cowboysave.ase" id="3_bv76r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbma6"]
-size = Vector2(5.5, 7.25)
+size = Vector2(21, 31)
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(-1, -2)
 script = ExtResource("1_6ne0w")
 
 [node name="Icon" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(-1, 2)
 scale = Vector2(4, 4)
 texture = ExtResource("2_bsf47")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 5.5)
+position = Vector2(-1.5, 1.5)
 scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_qbma6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-texture_filter = 1
-zoom = Vector2(4, 4)
+zoom = Vector2(2, 2)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(62, -61)
-
-[node name="Cowboy" parent="." instance=ExtResource("3_bv76r")]
-texture_filter = 1
-position = Vector2(-1, 5)
-animation = &"Idle"

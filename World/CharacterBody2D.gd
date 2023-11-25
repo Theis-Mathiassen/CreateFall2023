@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
-@export var max_speed = 100
+@export var max_speed = 600
 @export var friction = 1000
 @export var acceleration = 2500
 
 #@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var marker_2d = $Marker2D
-@onready var anim = $Cowboy
 
 var input = Vector2.ZERO
 
@@ -15,7 +14,6 @@ var dynamite_off_cooldown = true
 var dynamite = preload("res://Throwables/dynamite.tscn")
 
 func _physics_process(delta):
-	anim.play("Idle")
 	player_movement(delta)
 
 func get_input():
