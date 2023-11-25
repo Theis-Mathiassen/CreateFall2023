@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4e6akwqys4p7"]
+[gd_scene load_steps=8 format=3 uid="uid://c4e6akwqys4p7"]
 
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ni4hg"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="2_buv0e"]
 [ext_resource type="Texture2D" uid="uid://cuugp74vbg5nb" path="res://World/Assets/tileset.png" id="3_rpm5t"]
 [ext_resource type="PackedScene" uid="uid://de2v1quc4h63b" path="res://World/Gold/Gold.tscn" id="4_s2apd"]
+[ext_resource type="PackedScene" uid="uid://wmu6oqv7amit" path="res://Shared/Components/cave_entrance.tscn" id="5_eklv8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
 texture = ExtResource("3_rpm5t")
@@ -152,6 +153,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jwjnr")
 
 [node name="Main" type="Node2D"]
+
+[node name="Cave_Entrance" parent="." instance=ExtResource("5_eklv8")]
+position = Vector2(413, 599)
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-1, -2)
