@@ -1,4 +1,5 @@
 extends Area2D
+@onready var audio_stream_player = $AudioStreamPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,6 +13,10 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	audio_stream_player.play()
+	
 	Global.player_health += 2
+	self.visible = false
+	await audio_stream_player.finished
 	queue_free()
 	pass # Replace with function body.
