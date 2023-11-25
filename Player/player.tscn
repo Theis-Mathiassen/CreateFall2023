@@ -112,7 +112,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [2, 1, 0]
+"values": [2, 0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_e0hvb"]
@@ -319,7 +319,7 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_iqw5b"]
+[sub_resource type="Animation" id="Animation_3gmmq"]
 resource_name = "Attack"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -367,12 +367,12 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [2, 1, 0]
+"values": [2, 0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_frhjk"]
 _data = {
-"Attack": SubResource("Animation_iqw5b"),
+"Attack": SubResource("Animation_3gmmq"),
 "Idle": SubResource("Animation_sbdq2"),
 "Pickaxe": SubResource("Animation_yikgj"),
 "RESET": SubResource("Animation_e0hvb"),
@@ -380,6 +380,9 @@ _data = {
 "RunningDown": SubResource("Animation_2itkc"),
 "RunningUp": SubResource("Animation_il130")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c8lhj"]
+radius = 22.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxrhy"]
 size = Vector2(7, 16.5)
@@ -408,11 +411,16 @@ zoom = Vector2(6, 6)
 position = Vector2(62, -61)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_frhjk")
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(4, 0)
+shape = SubResource("CircleShape2D_c8lhj")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 
@@ -446,15 +454,15 @@ scale = Vector2(0.2, 0.2)
 max_value = 10.0
 show_percentage = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
-position = Vector2(8, 0)
-shape = SubResource("CircleShape2D_kewga")
-
-[node name="attack_cooldown" type="Timer" parent="."]
+[node name="hp_regain_timer" type="Timer" parent="."]
 
 [node name="deal_attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
-[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="deal_attack_cooldown" to="." method="_on_deal_attack_cooldown_timeout"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

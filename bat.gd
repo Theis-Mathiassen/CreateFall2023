@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-@export var health = 5
+@export var health = 4
 @export var max_speed = 20
 @export var acceleration = 15
 @export var friction = 700

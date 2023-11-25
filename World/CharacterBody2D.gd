@@ -46,32 +46,33 @@ func get_input():
 	return input.normalized()
 	
 func player_movement(delta):
+	print(attack_in_progress)
 	# positive or negative 1 for x and y.
 	input = get_input()
-	
-	if input.x > 0.5:
+	if Input.is_action_pressed("Attack") and not attack_in_progress:
+			attack_in_progress = true
+			animation_player.play("Attack")
+			await get_tree().create_timer(0.25).timeout
+			attack_in_progress = false
+	elif input.x > 0.5 and not attack_in_progress:
 		icon.scale.x = 1
-		animation_player.play("Running")
-	elif input.x < -0.5:
+		animation_player.play("Running") 
+	elif input.x < -0.5 and not attack_in_progress:
 		icon.scale.x = -1
 		animation_player.play("Running")
 		
-	elif input.y == 1:
+	elif input.y == 1 and not attack_in_progress:
 		animation_player.play("RunningDown")
-	elif input.y == -1:
+	elif input.y == -1 and not attack_in_progress:
 		animation_player.play("RunningUp")
 		
-	else:
+	elif not attack_in_progress:
 		if Input.is_action_pressed("Pickaxe"):
 			mining = true
 			animation_player.play("Pickaxe")
 			pickaxe_collision.disabled = false
 			
-		elif Input.is_action_pressed("Attack") :
-			attack_in_progress = true
-			animation_player.play("Attack")
-			
-		else:
+		elif not attack_in_progress:
 			mining = false
 			animation_player.play("Idle")
 		
@@ -95,7 +96,8 @@ func player_movement(delta):
 		# stop at max speed
 		velocity = velocity.limit_length(max_speed)
 		
-	move_and_slide()
+	if not attack_in_progress:
+		move_and_slide()
 	
 	if Input.is_action_just_pressed("3"):
 		if dynamite_equipped:
@@ -108,7 +110,7 @@ func player_movement(delta):
 	
 	
 	
-	if Input.is_action_just_pressed("left_mouse") and dynamite_off_cooldown and dynamite_equipped:
+	if Input.is_action_just_pressed("left_mouse") and dynamite_off_cooldown and dynamite_equipped and not attack_in_progress:
 		dynamite_off_cooldown = false
 		var dynamite_instance = dynamite.instantiate()
 		dynamite_instance.rotation = marker_2d.rotation
@@ -130,10 +132,9 @@ func _on_player_hitbox_body_exited(body):
 
 func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_cooldown == true:
-		Global.player_health = Global.player_health - 2
+		Global.player_health = Global.player_health - Global.enemy_attack_damage
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
-		#print(Global.player_health)
 
 func _on_attack_cooldown_timeout():
 	enemy_attack_cooldown = true

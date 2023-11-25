@@ -1,7 +1,7 @@
 extends StaticBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var area_detection = %AreaDetection
-var player :Player
+var player : Player
 var touched_by_player:bool = false
 var Start_count = 100.0
 var count = Start_count
