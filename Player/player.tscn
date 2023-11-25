@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dr24s6rc63ylv"]
+[gd_scene load_steps=17 format=3 uid="uid://dr24s6rc63ylv"]
 
 [ext_resource type="Script" path="res://World/CharacterBody2D.gd" id="1_6ne0w"]
 [ext_resource type="Texture2D" uid="uid://c8qc3alcxxjd5" path="res://Player/moleidle.png" id="2_tn8dn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dkhif70li5shs" path="res://Player/molerunningdown.png" id="4_mylji"]
 [ext_resource type="Texture2D" uid="uid://d3owrb5lv2c5w" path="res://Player/molerunningup.png" id="5_wjjaa"]
 [ext_resource type="Texture2D" uid="uid://doi0i87n5e7qo" path="res://Player/mining.png" id="6_4epr6"]
+[ext_resource type="Texture2D" uid="uid://gh5b5tojl00g" path="res://UI/Assets/light_texture.png" id="7_wc7gq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbma6"]
 size = Vector2(8, 16)
@@ -63,8 +64,8 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_4hwr0"]
-resource_name = "Running"
+[sub_resource type="Animation" id="Animation_yikgj"]
+resource_name = "Pickaxe"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_46els")]
+"values": [ExtResource("6_4epr6")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -87,7 +88,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -108,10 +109,10 @@ tracks/3/path = NodePath("Icon:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [0, 1, 2]
 }
 
 [sub_resource type="Animation" id="Animation_e0hvb"]
@@ -163,6 +164,57 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_4hwr0"]
+resource_name = "Running"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_46els")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Icon:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_2itkc"]
@@ -267,57 +319,6 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4]
 }
 
-[sub_resource type="Animation" id="Animation_yikgj"]
-resource_name = "Pickaxe"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_4epr6")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Icon:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_frhjk"]
 _data = {
 "Idle": SubResource("Animation_sbdq2"),
@@ -366,3 +367,15 @@ unique_name_in_owner = true
 position = Vector2(13.5, 7.75)
 shape = SubResource("RectangleShape2D_sxrhy")
 disabled = true
+
+[node name="TextureLight" type="PointLight2D" parent="."]
+energy = 0.7
+texture = ExtResource("7_wc7gq")
+
+[node name="Shadow" type="PointLight2D" parent="."]
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.0
+texture = ExtResource("7_wc7gq")
+texture_scale = 0.5
