@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://di6510tqlcwom"]
+[gd_scene load_steps=9 format=3 uid="uid://di6510tqlcwom"]
 
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ketq4"]
 [ext_resource type="Texture2D" uid="uid://dyss0leghc83c" path="res://World/Assets/TileMap.png" id="2_7dexn"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="3_5agi3"]
+[ext_resource type="PackedScene" uid="uid://6p0006txldls" path="res://Enemy.tscn" id="4_7jg8g"]
+[ext_resource type="PackedScene" uid="uid://dic8ryabdt350" path="res://enemy_spawner.tscn" id="5_su7im"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vu8ji"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xm181"]
 texture = ExtResource("2_7dexn")
@@ -17,9 +24,11 @@ texture = ExtResource("2_7dexn")
 2:0/0 = 0
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vu8ji")
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vu8ji")
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
@@ -31,12 +40,15 @@ texture = ExtResource("2_7dexn")
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vu8ji")
 3:1/0 = 0
 3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_vu8ji")
 
 [sub_resource type="TileSet" id="TileSet_cxanc"]
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_xm181")
 
 [node name="Main" type="Node2D"]
@@ -54,3 +66,12 @@ layer_0/tile_data = PackedInt32Array(458758, 196608, 1, 393222, 196608, 1, 39322
 [node name="player" parent="." instance=ExtResource("3_5agi3")]
 position = Vector2(498, 505)
 scale = Vector2(0.5, 0.5)
+
+[node name="enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_7jg8g")]
+position = Vector2(748, 521)
+player = NodePath("../player")
+
+[node name="enemySpawner" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_su7im")]
+position = Vector2(504, 953)
+player = NodePath("../player")
+cooldown = 2

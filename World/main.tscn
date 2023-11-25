@@ -6,7 +6,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-1, -2)
+position = Vector2(63, -200)
 texture = ExtResource("1_ketq4")
 
 [node name="Icon" type="Sprite2D" parent="Icon"]
@@ -14,3 +14,4 @@ position = Vector2(-279, -131)
 texture = ExtResource("1_ketq4")
 
 [node name="player" parent="." instance=ExtResource("2_a8chp")]
+position = Vector2(-543, -140)

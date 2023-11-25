@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dic8ryabdt350"]
+
+[ext_resource type="Script" path="res://enemySpawner.gd" id="1_pwc3p"]
+[ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="2_ovokf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7v3d"]
+size = Vector2(38, 38.5)
+
+[node name="enemySpawner" type="Area2D"]
+position = Vector2(169, 105)
+script = ExtResource("1_pwc3p")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ovokf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_o7v3d")
+debug_color = Color(0.886275, 0.47451, 0.0901961, 0.419608)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
