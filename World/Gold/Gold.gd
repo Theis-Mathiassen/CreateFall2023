@@ -1,6 +1,6 @@
 extends StaticBody2D
 @onready var animation_player = $AnimationPlayer
-
+@onready var area_detection = %AreaDetection
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,8 +15,9 @@ func _process(delta):
 
 
 
-func _on_body_entered(body):
+func _on_area_2d_body_entered(body):
+	animation_player.play("Destroyed")
 	print(body)
-	
-	
 	pass # Replace with function body.
+
+
