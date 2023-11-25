@@ -155,6 +155,9 @@ sources/0 = SubResource("TileSetAtlasSource_jwjnr")
 [node name="Main" type="Node2D"]
 scale = Vector2(0.999405, 1.0002)
 
+[node name="Cave_Entrance" parent="." instance=ExtResource("5_eklv8")]
+position = Vector2(413, 599)
+
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-1, -2)
 texture = ExtResource("1_ni4hg")
