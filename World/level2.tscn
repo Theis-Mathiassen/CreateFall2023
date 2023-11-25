@@ -159,7 +159,7 @@ sources/0 = SubResource("TileSetAtlasSource_jwjnr")
 scale = Vector2(0.999405, 1.0002)
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-1, -2)
+position = Vector2(-92.0548, 11.9976)
 texture = ExtResource("1_ni4hg")
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -194,6 +194,7 @@ position = Vector2(344.618, 545.466)
 position = Vector2(376.232, 549.89)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.164706, 0.113725, 0.0588235, 1)
 
 [node name="light_lower_left" parent="." instance=ExtResource("5_nbqpy")]

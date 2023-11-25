@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7d86ei0ty5an"]
+
+[ext_resource type="Script" path="res://UI/Label.gd" id="1_yocck"]
+
+[node name="Node" type="CanvasLayer"]
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 206.0
+offset_bottom = 84.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 26.6667
+offset_right = 173.0
+offset_bottom = 52.6667
+text = "Gold Count: 00000"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_yocck")
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 42.6667
+offset_top = 186.667
+offset_right = 82.6667
+offset_bottom = 226.667
