@@ -423,10 +423,12 @@ shape = SubResource("RectangleShape2D_sxrhy")
 disabled = true
 
 [node name="TextureLight" type="PointLight2D" parent="."]
+visible = false
 energy = 0.7
 texture = ExtResource("7_wc7gq")
 
 [node name="Shadow" type="PointLight2D" parent="."]
+visible = false
 energy = 0.5
 shadow_enabled = true
 shadow_filter = 1

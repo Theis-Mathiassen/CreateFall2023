@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyo8t3yepu4hg"]
+[gd_scene load_steps=6 format=3 uid="uid://dyo8t3yepu4hg"]
 
 [ext_resource type="Script" path="res://Shared/Components/whiskey.gd" id="1_bp01i"]
 [ext_resource type="Texture2D" uid="uid://blfflods4wjm2" path="res://World/Assets/Whiskey.png" id="1_q6mf7"]
 [ext_resource type="FontVariation" uid="uid://dyn3foi5ruqiw" path="res://Font/FontVariation.tres" id="3_340no"]
+[ext_resource type="AudioStream" uid="uid://cuboik1md8fc5" path="res://Sound/Effects/Items/DrinkWhiskey.mp3" id="4_7vxl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qpxn"]
 size = Vector2(16, 24)
@@ -38,5 +39,8 @@ theme_override_colors/font_color = Color(0, 0.847059, 0, 1)
 theme_override_fonts/font = ExtResource("3_340no")
 theme_override_font_sizes/font_size = 10
 text = "+hp"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7vxl0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
