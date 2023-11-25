@@ -52,8 +52,8 @@ func _ready():
 	GenMap()
 	draw_map()
 	print(entrance)
-	player.global_position=Vector2(entrance.x+1,entrance.y)
-	exit.global_position=Vector2(entrance.x,entrance.y)
+	player.global_position=Vector2(entrance.x+(tile_size.x/2),entrance.y)
+	exit.global_position=Vector2(entrance.x-(tile_size.x/2),entrance.y)
 	
 	
 
