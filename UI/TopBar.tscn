@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7d86ei0ty5an"]
+[gd_scene load_steps=3 format=3 uid="uid://b7d86ei0ty5an"]
 
 [ext_resource type="Script" path="res://UI/Label.gd" id="1_yocck"]
+[ext_resource type="Script" path="res://UI/healthbar.gd" id="2_vavlk"]
 
 [node name="Node" type="CanvasLayer"]
 scale = Vector2(1.5, 1.5)
@@ -38,5 +39,8 @@ offset_left = 272.0
 offset_top = 21.3333
 offset_right = 442.0
 offset_bottom = 58.3333
+max_value = 10.0
+show_percentage = false
+script = ExtResource("2_vavlk")
 
 [connection signal="timeout" from="Timer" to="Panel/Label" method="_on_timer_timeout"]

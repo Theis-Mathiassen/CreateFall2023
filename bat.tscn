@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://pmk66mqxt7jm"]
 
 [ext_resource type="Script" path="res://bat.gd" id="1_757pl"]
-[ext_resource type="Texture2D" uid="uid://dhdi3tvu0f04m" path="res://World/Assets/Bat.png" id="1_xecur"]
-[ext_resource type="Texture2D" uid="uid://debd3jaam4yha" path="res://World/Assets/BatFlying.png" id="2_sgnok"]
+[ext_resource type="Texture2D" uid="uid://bepngdym0oro8" path="res://World/Assets/Bat.png" id="1_xecur"]
+[ext_resource type="Texture2D" uid="uid://b4dvf8jdgrkpy" path="res://World/Assets/BatFlying.png" id="2_sgnok"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tukc"]
 atlas = ExtResource("1_xecur")
@@ -63,6 +63,7 @@ radius = 7.0
 script = ExtResource("1_757pl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5vb7l")
 animation = &"idle1"
 
