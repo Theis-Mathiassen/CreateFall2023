@@ -2,6 +2,9 @@ extends Node2D
 @onready
 var tiles : TileMap = $Floor
 @onready var player = $player
+@onready var exit = $Cave_exits
+
+var gold = preload("res://World/Gold/Gold.tscn")
 
 var border = 1
 var map_size = Vector2i(64, 64)
@@ -30,7 +33,7 @@ var total_time = 0
 
 # Variables for placing stuff in map
 var entrance = Vector2i(0,0)
-
+var gold_ratio = 0.1
 
 
 
@@ -44,12 +47,13 @@ func _ready():
 			map_info[x].append(0)
 	# generate randomly seeded simplex noise map`
 	noise = FastNoiseLite.new()
-	noise.seed = noise_seed
+	noise.seed = randi_range(0, 10000)
 	
 	GenMap()
 	draw_map()
 	print(entrance)
-	player.global_position=Vector2(entrance.x,entrance.y)
+	player.global_position=Vector2(entrance.x+1,entrance.y)
+	exit.global_position=Vector2(entrance.x,entrance.y)
 	
 	
 
@@ -90,6 +94,7 @@ func GenMap ():
 				map_info[x][y] = 1
 	
 	connect_rooms()
+	place_items()
 	
 	
 	
@@ -248,4 +253,22 @@ func expand_room(room_id_map, x, y, id):
 	tiles_in_rooms.append(room_size)
 	if (tiles_in_rooms.max() == room_size):
 		entrance = Vector2i(x * tile_size.x,y*tile_size.y)
+		for xi in map_size.x:
+			for yi in map_size.y:
+				if (room_id_map[xi][yi] == id && map_info[xi+1][yi] == 0 && map_info[xi-1][yi] == 0 && map_info[xi][yi+1] == 0 && map_info[xi][yi-1] == 0):
+					entrance = Vector2i(xi * tile_size.x,yi*tile_size.y)
+					return
 	
+
+
+
+func place_items():
+	#Gold
+	#for x in map_size.x:
+	#	for y in map_size.y:
+	#		if (map_info[x][y] == 0 && randf() > gold_ratio):
+	#			var gold_instance = gold.instantiate()
+	#			gold_instance.global_position = Vector2(x * tile_size.x,y*tile_size.y)
+	#			add_child(gold_instance)
+	pass
+

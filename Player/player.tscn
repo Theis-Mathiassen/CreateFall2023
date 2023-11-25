@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dr24s6rc63ylv"]
+[gd_scene load_steps=17 format=3 uid="uid://dr24s6rc63ylv"]
 
 [ext_resource type="Script" path="res://World/CharacterBody2D.gd" id="1_6ne0w"]
 [ext_resource type="Texture2D" uid="uid://c8qc3alcxxjd5" path="res://Player/moleidle.png" id="2_tn8dn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dkhif70li5shs" path="res://Player/molerunningdown.png" id="4_mylji"]
 [ext_resource type="Texture2D" uid="uid://d3owrb5lv2c5w" path="res://Player/molerunningup.png" id="5_wjjaa"]
 [ext_resource type="Texture2D" uid="uid://doi0i87n5e7qo" path="res://Player/mining.png" id="6_4epr6"]
+[ext_resource type="Texture2D" uid="uid://gh5b5tojl00g" path="res://UI/Assets/light_texture.png" id="7_wc7gq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbma6"]
 size = Vector2(8, 16)
@@ -331,8 +332,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxrhy"]
 size = Vector2(7, 16.5)
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(-1, -2)
+scale = Vector2(0.5, 0.5)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_6ne0w")
 
 [node name="Icon" type="Sprite2D" parent="."]
@@ -366,3 +370,15 @@ unique_name_in_owner = true
 position = Vector2(13.5, 7.75)
 shape = SubResource("RectangleShape2D_sxrhy")
 disabled = true
+
+[node name="TextureLight" type="PointLight2D" parent="."]
+energy = 0.7
+texture = ExtResource("7_wc7gq")
+
+[node name="Shadow" type="PointLight2D" parent="."]
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.0
+texture = ExtResource("7_wc7gq")
+texture_scale = 0.5
