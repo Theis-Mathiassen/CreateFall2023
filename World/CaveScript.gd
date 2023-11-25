@@ -44,7 +44,7 @@ func _ready():
 			map_info[x].append(0)
 	# generate randomly seeded simplex noise map`
 	noise = FastNoiseLite.new()
-	noise.seed = noise_seed
+	noise.seed = randi_range(0, 10000)
 	
 	GenMap()
 	draw_map()
@@ -248,4 +248,8 @@ func expand_room(room_id_map, x, y, id):
 	tiles_in_rooms.append(room_size)
 	if (tiles_in_rooms.max() == room_size):
 		entrance = Vector2i(x * tile_size.x,y*tile_size.y)
+		for xi in map_size.x:
+			for yi in map_size.y:
+				if (room_id_map[xi][yi] == id && map_info[xi+1][yi] == 0 && map_info[xi-1][yi] == 0 && map_info[xi][yi+1] == 0 && map_info[xi][yi-1] == 0):
+					entrance = Vector2i(xi * tile_size.x,yi*tile_size.y)
 	
