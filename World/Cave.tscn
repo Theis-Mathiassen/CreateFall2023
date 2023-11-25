@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn0rtg2d532cn"]
+[gd_scene load_steps=9 format=3 uid="uid://bn0rtg2d532cn"]
 
 [ext_resource type="Texture2D" uid="uid://dyss0leghc83c" path="res://World/Assets/TileMap.png" id="1_ivdwc"]
 [ext_resource type="Script" path="res://World/CaveScript.gd" id="2_4e25o"]
 [ext_resource type="Texture2D" uid="uid://duekkuxehi5xc" path="res://World/Assets/TileSetCaveGrey.png" id="3_wofed"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="3_yk3ky"]
 [ext_resource type="PackedScene" uid="uid://bhf1s7up73q4u" path="res://Shared/Components/cave_exit.tscn" id="5_sy34o"]
-[ext_resource type="PackedScene" uid="uid://5h45jy1x64an" path="res://Shared/Components/pants.tscn" id="6_57v0l"]
-[ext_resource type="PackedScene" uid="uid://de2v1quc4h63b" path="res://World/Gold/Gold.tscn" id="7_bclw4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrpuh"]
 texture = ExtResource("3_wofed")
@@ -294,11 +292,6 @@ layer_0/name = "0"
 [node name="Cave_exits" parent="." instance=ExtResource("5_sy34o")]
 
 [node name="player" parent="." instance=ExtResource("3_yk3ky")]
-position = Vector2(0, 0)
-
-[node name="Pants" parent="." instance=ExtResource("6_57v0l")]
-position = Vector2(23, 24)
 
 [node name="Gold_holder" type="Node2D" parent="."]
-
-[node name="Gold" parent="Gold_holder" instance=ExtResource("7_bclw4")]
+unique_name_in_owner = true

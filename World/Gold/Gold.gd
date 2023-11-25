@@ -5,7 +5,7 @@ var player :Player
 var touched_by_player:bool = false
 var Start_count = 100.0
 var count = Start_count
-@onready var original_scale = Vector2(self.scale.x, self.scale.y)
+@onready var original_scale = Vector2(%Sprite2D.scale.x, %Sprite2D.scale.y)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,9 +14,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	print(count)
+	
 	if player != null:
-		if player.mining:
+		if player.mining && touched_by_player:
 			animation_player.play("Destroyed")
 			count -= 1
 			decrease_gold_size()
@@ -36,6 +36,7 @@ func _on_area_2d_body_entered(body: Player):
 		
 func _on_area_2d_body_exited(_body):
 	touched_by_player = false
+	print("left")
 	
 
 
@@ -43,7 +44,7 @@ func _on_area_2d_body_exited(_body):
 func decrease_gold_size():
 	count -= 1
 	Global.total_player_gold += 2
-	self.scale = Vector2(original_scale.x*(count/Start_count), original_scale.y*(count/Start_count))
+	%Sprite2D.scale = Vector2(original_scale.x*(count/Start_count), original_scale.y*(count/Start_count))
 
 
 
