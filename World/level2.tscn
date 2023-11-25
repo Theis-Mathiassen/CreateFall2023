@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ni4hg"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="2_buv0e"]
 [ext_resource type="Texture2D" uid="uid://cuugp74vbg5nb" path="res://World/Assets/tileset.png" id="3_rpm5t"]
-[ext_resource type="PackedScene" uid="uid://de2v1quc4h63b" path="res://World/Gold/Gold.tscn" id="4_s2apd"]
+[ext_resource type="Texture2D" uid="uid://gh5b5tojl00g" path="res://UI/Assets/light_texture.png" id="4_lynm2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
 texture = ExtResource("3_rpm5t")
@@ -183,6 +183,20 @@ layer_2/tile_data = PackedInt32Array()
 position = Vector2(344.618, 545.466)
 scale = Vector2(0.5, 0.5)
 
+[node name="TextureLight" type="PointLight2D" parent="player"]
+energy = 0.7
+texture = ExtResource("4_lynm2")
+
+[node name="Shadow" type="PointLight2D" parent="player"]
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.0
+texture = ExtResource("4_lynm2")
+texture_scale = 0.5
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.192157, 0.133333, 0.0901961, 1)
 [node name="Gold" parent="." instance=ExtResource("4_s2apd")]
 texture_filter = 1
 position = Vector2(441, 578)
