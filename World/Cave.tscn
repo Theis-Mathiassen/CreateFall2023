@@ -1,20 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn0rtg2d532cn"]
+[gd_scene load_steps=6 format=3 uid="uid://bn0rtg2d532cn"]
 
 [ext_resource type="Texture2D" uid="uid://dyss0leghc83c" path="res://World/Assets/TileMap.png" id="1_ivdwc"]
 [ext_resource type="Script" path="res://World/CaveScript.gd" id="2_4e25o"]
+[ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="3_yk3ky"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfima"]
 texture = ExtResource("1_ivdwc")
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
 3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
 0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
 2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
 3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_tqpnu"]
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_rfima")
 
 [node name="Cave" type="Node2D"]
@@ -28,3 +47,6 @@ cut_off = 0.97
 tile_set = SubResource("TileSet_tqpnu")
 format = 2
 layer_0/name = "0"
+
+[node name="player" parent="." instance=ExtResource("3_yk3ky")]
+position = Vector2(805, 337)

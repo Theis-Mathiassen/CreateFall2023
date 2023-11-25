@@ -1,8 +1,12 @@
 extends Node2D
+@onready
+var tiles : TileMap = $Floor
+@onready var player = $player
 
 var border = 1
 var map_size = Vector2(64, 64)
 var map_info = []
+var tile_size
 
 var number_rooms = 0
 var tiles_in_rooms = []
@@ -19,14 +23,21 @@ var altitude_noise_layer = {}
 
 @export var cut_off : float = 0.8
 
-@onready
-var tiles : TileMap = $Floor
 
 
 var total_time = 0
 
+
+# Variables for placing stuff in map
+var entrance = Vector2i(0,0)
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	tile_size = Vector2i(tiles.tile_set.tile_size.x, tiles.tile_set.tile_size.y)
+	
 	for x in range(map_size.x):
 		map_info.append([])
 		for y in range(map_size.y):
@@ -36,6 +47,9 @@ func _ready():
 	noise.seed = noise_seed
 	
 	GenMap()
+	
+	print(entrance)
+	player.global_position=Vector2(entrance.x,entrance.y)
 	
 	
 
@@ -126,4 +140,6 @@ func expand_room(room_id_map, x, y, id):
 		if (map_info[next_pos.x][next_pos.y] == 0 && room_id_map[next_pos.x][next_pos.y] != id):
 			queue.append(next_pos)
 	tiles_in_rooms.append(room_size)
+	if (tiles_in_rooms.max() == room_size):
+		entrance = Vector2i(x * tile_size.x,y*tile_size.y)
 	
