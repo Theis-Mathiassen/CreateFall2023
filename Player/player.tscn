@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dr24s6rc63ylv"]
+[gd_scene load_steps=18 format=3 uid="uid://dr24s6rc63ylv"]
 
 [ext_resource type="Script" path="res://World/CharacterBody2D.gd" id="1_6ne0w"]
 [ext_resource type="Texture2D" uid="uid://c8qc3alcxxjd5" path="res://Player/moleidle.png" id="2_tn8dn"]
@@ -423,12 +423,10 @@ shape = SubResource("RectangleShape2D_sxrhy")
 disabled = true
 
 [node name="TextureLight" type="PointLight2D" parent="."]
-visible = false
 energy = 0.7
 texture = ExtResource("7_wc7gq")
 
 [node name="Shadow" type="PointLight2D" parent="."]
-visible = false
 energy = 0.5
 shadow_enabled = true
 shadow_filter = 1
@@ -441,14 +439,3 @@ position = Vector2(6, 4)
 current = true
 
 [node name="Running" type="AudioStreamPlayer2D" parent="."]
-[node name="healthbar" type="ProgressBar" parent="."]
-modulate = Color(0.431373, 1, 0.0509804, 1)
-offset_left = -10.0
-offset_top = -24.0
-offset_right = 160.0
-offset_bottom = 13.0
-scale = Vector2(0.2, 0.2)
-max_value = 10.0
-show_percentage = false
-
-[node name="hp_regain_timer" type="Timer" parent="."]
