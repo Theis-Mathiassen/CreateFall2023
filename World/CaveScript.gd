@@ -1,0 +1,129 @@
+extends Node2D
+
+var border = 1
+var map_size = Vector2(64, 64)
+var map_info = []
+
+var number_rooms = 0
+var tiles_in_rooms = []
+
+# Instantiate
+var noise
+var altitude_noise_layer = {}
+@export var noise_seed : int = 0
+@export var alt_freq : float = 0.005
+@export var oct : int = 4
+@export var lac : int = 2
+@export var gain : float = 0.5
+@export var amplitude : float = 1.0
+
+@export var cut_off : float = 0.8
+
+@onready
+var tiles : TileMap = $Floor
+
+
+var total_time = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	for x in range(map_size.x):
+		map_info.append([])
+		for y in range(map_size.y):
+			map_info[x].append(0)
+	# generate randomly seeded simplex noise map`
+	noise = FastNoiseLite.new()
+	noise.seed = noise_seed
+	
+	GenMap()
+	
+	
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	total_time += delta
+	if (total_time > 10):
+		print(total_time)
+		noise.seed = randi_range(0, 10000)
+		GenMap()
+		total_time = 0
+	pass
+
+
+func GenMap ():
+	
+	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
+	noise.frequency = alt_freq
+	noise.fractal_octaves = oct
+	noise.fractal_lacunarity = lac
+	noise.fractal_gain = gain
+	var noise_image = noise.get_image(map_size.x, map_size.y)
+	print(cut_off)
+	for x in map_size.x:
+		for y in map_size.y:
+			if x >= border && x + border < map_size.x && y >= border && y + border < map_size.y:
+				if (abs(noise.get_noise_2d(x,y) * 2 - 1 ) > cut_off):
+					tiles.set_cell(0,Vector2i(x,y),0, Vector2i(2,0), 0)
+					map_info[x][y] = 0
+				else:
+					tiles.set_cell(0,Vector2i(x,y),0, Vector2i(0,0), 0)
+					map_info[x][y] = 1
+			else:
+				tiles.set_cell(0,Vector2i(x,y),0, Vector2i(0,0), 0)
+				map_info[x][y] = 1
+	
+	connect_rooms()
+	
+	
+	
+
+
+func connect_rooms():
+	var room_index_map = find_all_rooms()
+	for x in map_size.x:
+		for y in map_size.y:
+			if room_index_map[x][y] != -1:
+				var cur_room = room_index_map[x][y] % 8
+				tiles.set_cell(0,Vector2i(x,y),0, Vector2i(cur_room % 4,cur_room /4), 0)
+	
+
+func find_all_rooms():
+	var rooms = 0;
+	var room_id_map = []
+	for x in range(map_size.x):
+		room_id_map.append([])
+		for y in range(map_size.y):
+			room_id_map[x].append(-1)
+	for x in map_size.x:
+		for y in map_size.y:
+			if map_info[x][y] == 0 && room_id_map[x][y] == -1:
+				expand_room(room_id_map, x, y, rooms)
+				rooms = rooms + 1
+	return room_id_map
+	
+func expand_room(room_id_map, x, y, id):
+	var room_size = 0;
+	var cur_pos = Vector2i(x,y)
+	var queue = []
+	queue.append(cur_pos)
+	
+	while queue.is_empty() == false:
+		cur_pos = queue.pop_back()
+		room_id_map[cur_pos.x][cur_pos.y] = id
+		room_size += 1
+		var next_pos = Vector2i(min(cur_pos.x + 1, map_size.x-1),cur_pos.y)
+		if (map_info[next_pos.x][next_pos.y] == 0 && room_id_map[next_pos.x][next_pos.y] != id):
+			queue.append(next_pos)
+		next_pos = Vector2i(cur_pos.x,min(cur_pos.y + 1, map_size.y-1))
+		if (map_info[next_pos.x][next_pos.y] == 0 && room_id_map[next_pos.x][next_pos.y] != id):
+			queue.append(next_pos)
+		next_pos = Vector2i(max(cur_pos.x - 1, 0),cur_pos.y)
+		if (map_info[next_pos.x][next_pos.y] == 0 && room_id_map[next_pos.x][next_pos.y] != id):
+			queue.append(next_pos)
+		next_pos = Vector2i(cur_pos.x,max(cur_pos.y - 1, 0))
+		if (map_info[next_pos.x][next_pos.y] == 0 && room_id_map[next_pos.x][next_pos.y] != id):
+			queue.append(next_pos)
+	tiles_in_rooms.append(room_size)
+	

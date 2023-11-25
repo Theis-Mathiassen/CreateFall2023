@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn0rtg2d532cn"]
+
+[ext_resource type="Texture2D" uid="uid://dyss0leghc83c" path="res://World/Assets/TileMap.png" id="1_ivdwc"]
+[ext_resource type="Script" path="res://World/CaveScript.gd" id="2_4e25o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfima"]
+texture = ExtResource("1_ivdwc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tqpnu"]
+sources/0 = SubResource("TileSetAtlasSource_rfima")
+
+[node name="Cave" type="Node2D"]
+script = ExtResource("2_4e25o")
+alt_freq = 0.08
+oct = 8
+lac = 1
+cut_off = 0.97
+
+[node name="Floor" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_tqpnu")
+format = 2
+layer_0/name = "0"
