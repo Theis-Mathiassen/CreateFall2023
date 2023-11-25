@@ -6,6 +6,9 @@ extends CharacterBody2D
 @export var acceleration = 2500
 @onready var icon = $Icon
 
+@onready var running = $Running
+
+
 @onready var animation_player = $AnimationPlayer
 
 #@onready var animated_sprite_2d = $AnimatedSprite2D
@@ -80,7 +83,16 @@ func player_movement(delta):
 	
 	if Input.is_action_just_released("Pickaxe"):
 		mining = false
-
+	
+	if velocity.length() > 1:
+		if (running.playing == false):
+			pass
+			#running.play()
+			#print("Run!")
+	else:
+		pass
+		#running.stop()
+	
 	
 	# Stops our character
 	if input == Vector2.ZERO:
