@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d04d0f55uva31"]
+
+[ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_c6y50"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7hack"]
+
+[node name="Minecart" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.14, 0.09)
+texture = ExtResource("1_c6y50")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+scale = Vector2(-24.0507, 1.01163)
+occluder = SubResource("OccluderPolygon2D_7hack")
