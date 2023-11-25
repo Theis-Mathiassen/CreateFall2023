@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://dyn3foi5ruqiw"]
+
+[ext_resource type="FontFile" uid="uid://demvg2sj3fdh3" path="res://Font/Abaddon Bold.ttf" id="1_v1w4l"]
+
+[resource]
+base_font = ExtResource("1_v1w4l")
