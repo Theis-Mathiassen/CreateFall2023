@@ -12,3 +12,4 @@ var Dseconds = 0
 var DMinutes = 2
 
 var gold_quota = 250
+var enemy_attack_damage = 1

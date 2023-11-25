@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c4e6akwqys4p7"]
+[gd_scene load_steps=11 format=3 uid="uid://c4e6akwqys4p7"]
 
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ni4hg"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="2_buv0e"]
@@ -7,9 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://wmu6oqv7amit" path="res://Shared/Components/cave_entrance.tscn" id="5_eklv8"]
 [ext_resource type="PackedScene" uid="uid://d04d0f55uva31" path="res://World/minecart.tscn" id="5_n00wo"]
 [ext_resource type="PackedScene" uid="uid://qbsnniqv085h" path="res://World/standing_light.tscn" id="5_nbqpy"]
-[ext_resource type="PackedScene" path="res://UI/TopBar.tscn" id="8_pmftk"]
 [ext_resource type="PackedScene" uid="uid://pmk66mqxt7jm" path="res://bat.tscn" id="8_xiclq"]
-[ext_resource type="PackedScene" path="res://Shared/Components/whiskey.tscn" id="10_et4ya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
 texture = ExtResource("3_rpm5t")
@@ -221,8 +219,3 @@ position = Vector2(336.2, 590.882)
 [node name="bat" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_xiclq")]
 position = Vector2(426, 525)
 player = NodePath("../player")
-
-[node name="Node" parent="." instance=ExtResource("8_pmftk")]
-
-[node name="Whiskey" parent="." instance=ExtResource("10_et4ya")]
-position = Vector2(373.222, 582.883)
