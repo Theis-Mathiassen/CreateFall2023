@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export var max_speed = 150
@@ -10,6 +11,8 @@ extends CharacterBody2D
 #@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var marker_2d = $Marker2D
 @onready var pickaxe_collision = %PickaxeCollision
+
+var mining: bool = true
 
 var input = Vector2.ZERO
 
@@ -45,6 +48,7 @@ func player_movement(delta):
 		
 		
 	elif Input.is_action_pressed("Pickaxe"):
+		mining = true
 		animation_player.play("Pickaxe")
 		pickaxe_collision.disabled = false
 		
@@ -52,6 +56,10 @@ func player_movement(delta):
 		animation_player.play("Idle")
 	
 	pickaxe_collision.disabled = true
+	
+	if Input.is_action_just_released("Pickaxe"):
+		mining = false
+
 	
 	# Stops our character
 	if input == Vector2.ZERO:
