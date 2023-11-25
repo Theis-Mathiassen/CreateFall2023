@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_qovc5"]
 
 [node name="Cave_Entrance" type="Area2D"]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_mui62")
 
@@ -18,5 +18,5 @@ shape = SubResource("CircleShape2D_qovc5")
 texture_filter = 1
 texture = ExtResource("1_c0a77")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
