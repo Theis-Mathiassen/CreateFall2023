@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="2_buv0e"]
 [ext_resource type="Texture2D" uid="uid://cuugp74vbg5nb" path="res://World/Assets/tileset.png" id="3_rpm5t"]
 [ext_resource type="Texture2D" uid="uid://gh5b5tojl00g" path="res://UI/Assets/light_texture.png" id="4_lynm2"]
-[ext_resource type="PackedScene" path="res://World/minecart.tscn" id="5_n00wo"]
+[ext_resource type="PackedScene" uid="uid://d04d0f55uva31" path="res://World/minecart.tscn" id="5_n00wo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
 texture = ExtResource("3_rpm5t")
