@@ -10,3 +10,8 @@ func _ready():
 func _process(delta):
 	self.text = "Total gold:  " + str(Global.total_player_gold)
 	pass
+
+
+func _on_timer_timeout():
+	Global
+	pass # Replace with function body.
