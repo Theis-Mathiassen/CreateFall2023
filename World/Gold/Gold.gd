@@ -1,8 +1,11 @@
 extends StaticBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var area_detection = %AreaDetection
-@onready var mining_timer = %MiningTimer
-var count = 3
+var player :Player
+var touched_by_player:bool = false
+var Start_count = 100.0
+var count = Start_count
+@onready var original_scale = Vector2(%Sprite2D.scale.x, %Sprite2D.scale.y)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,36 +13,39 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+func _process(_delta):
+	
+	if player != null:
+		if player.mining && touched_by_player:
+			animation_player.play("Destroyed")
+			count -= 1
+			decrease_gold_size()
+			if count <= 0:
+				queue_free()
 
 
 
 
 func _on_area_2d_body_entered(body: Player):
-	if body.mining:
+	player = body
+	touched_by_player = true
+	print("hit")
 	
-		while count > 0:
-			await get_tree().create_timer(1).timeout
-			animation_player.play("Destroyed")
-			count -= 1
-			decrease_gold_size()
-
-		queue_free()
+	
+	
 		
-		
-		
-		print(body)
-		
-		
-	pass # Replace with function body.
+func _on_area_2d_body_exited(_body):
+	touched_by_player = false
+	print("left")
 	
 
 
 
 func decrease_gold_size():
 	count -= 1
-	Global.total_player_gold += 25
-	self.scale = Vector2(scale.x - 0.1, scale.y - 0.1)
-	pass # Replace with function body.
+	Global.total_player_gold += 2
+	%Sprite2D.scale = Vector2(original_scale.x*(count/Start_count), original_scale.y*(count/Start_count))
+
+
+
+

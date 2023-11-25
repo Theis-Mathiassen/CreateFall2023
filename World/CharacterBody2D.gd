@@ -14,6 +14,12 @@ extends CharacterBody2D
 
 var mining: bool = true
 
+var enemy_in_attack_range = false
+var enemy_attack_cooldown = true
+var attack_cooldown = true
+var player_alive = true
+
+
 var input = Vector2.ZERO
 
 var dynamite_equipped = true
@@ -23,6 +29,14 @@ var dynamite = preload("res://Throwables/dynamite.tscn")
 
 func _physics_process(delta):
 	player_movement(delta)
+	enemy_attack()
+	update_health()
+	
+	if Global.player_health <= 0 :
+		player_alive = false 
+		Global.player_health = 0
+		print("deadge")
+		# end screen
 
 func get_input():
 	input.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
@@ -34,10 +48,10 @@ func player_movement(delta):
 	# positive or negative 1 for x and y.
 	input = get_input()
 	
-	if input.x == 1:
+	if input.x > 0.5:
 		icon.scale.x = 1
 		animation_player.play("Running")
-	elif input.x == -1:
+	elif input.x < -0.5:
 		icon.scale.x = -1
 		animation_player.play("Running")
 		
@@ -46,16 +60,17 @@ func player_movement(delta):
 	elif input.y == -1:
 		animation_player.play("RunningUp")
 		
-		
-	elif Input.is_action_pressed("Pickaxe"):
-		mining = true
-		animation_player.play("Pickaxe")
-		pickaxe_collision.disabled = false
-		
 	else:
-		animation_player.play("Idle")
-	
-	pickaxe_collision.disabled = true
+		if Input.is_action_pressed("Pickaxe"):
+			mining = true
+			animation_player.play("Pickaxe")
+			pickaxe_collision.disabled = false
+			
+		else:
+			mining = false
+			animation_player.play("Idle")
+		
+		pickaxe_collision.disabled = true
 	
 	if Input.is_action_just_released("Pickaxe"):
 		mining = false
@@ -99,4 +114,40 @@ func player_movement(delta):
 		dynamite_off_cooldown = true
 
 
+func _on_player_hitbox_body_entered(body):
+	if body.has_method("enemy"):
+		enemy_in_attack_range = true
+
+
+func _on_player_hitbox_body_exited(body):
+	if body.has_method("enemy"):
+		enemy_in_attack_range = false
+
+func enemy_attack():
+	if enemy_in_attack_range and enemy_attack_cooldown == true:
+		Global.player_health = Global.player_health - 2
+		enemy_attack_cooldown = false
+		$attack_cooldown.start()
+		print(Global.player_health)
+
+func _on_attack_cooldown_timeout():
+	enemy_attack_cooldown = true
+
+
+func player():
+	pass
+
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = Global.player_health
 	
+	if Global.player_health >= 100:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
+		
+	if Global.player_health < 0:
+		Global.player_health = 0
+		
+		
+

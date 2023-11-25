@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4e6akwqys4p7"]
+[gd_scene load_steps=13 format=3 uid="uid://c4e6akwqys4p7"]
 
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ni4hg"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="2_buv0e"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://wmu6oqv7amit" path="res://Shared/Components/cave_entrance.tscn" id="5_eklv8"]
 [ext_resource type="PackedScene" uid="uid://d04d0f55uva31" path="res://World/minecart.tscn" id="5_n00wo"]
 [ext_resource type="PackedScene" uid="uid://qbsnniqv085h" path="res://World/standing_light.tscn" id="5_nbqpy"]
+[ext_resource type="PackedScene" uid="uid://b7d86ei0ty5an" path="res://UI/TopBar.tscn" id="8_pmftk"]
+[ext_resource type="PackedScene" uid="uid://pmk66mqxt7jm" path="res://bat.tscn" id="8_xiclq"]
+[ext_resource type="PackedScene" uid="uid://dyo8t3yepu4hg" path="res://Shared/Components/whiskey.tscn" id="10_et4ya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
 texture = ExtResource("3_rpm5t")
@@ -158,7 +161,7 @@ sources/0 = SubResource("TileSetAtlasSource_jwjnr")
 scale = Vector2(0.999405, 1.0002)
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(-1, -2)
+position = Vector2(-92.0548, 11.9976)
 texture = ExtResource("1_ni4hg")
 
 [node name="TileMap2" type="TileMap" parent="."]
@@ -193,6 +196,7 @@ position = Vector2(344.618, 545.466)
 position = Vector2(376.232, 549.89)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.164706, 0.113725, 0.0588235, 1)
 
 [node name="light_lower_left" parent="." instance=ExtResource("5_nbqpy")]
@@ -213,3 +217,12 @@ scale = Vector2(1, 0.999999)
 
 [node name="Gold" parent="." instance=ExtResource("4_s2apd")]
 position = Vector2(336.2, 590.882)
+
+[node name="bat" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_xiclq")]
+position = Vector2(426, 525)
+player = NodePath("../player")
+
+[node name="Node" parent="." instance=ExtResource("8_pmftk")]
+
+[node name="Whiskey" parent="." instance=ExtResource("10_et4ya")]
+position = Vector2(373.222, 582.883)

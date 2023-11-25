@@ -9,9 +9,11 @@ var gold = preload("res://World/Gold/Gold.tscn")
 var border = 1
 var map_size = Vector2i(64, 64)
 var map_info = []
+var room_index_map
 var tile_size
 
 var number_rooms = 0
+var largest_room = 0
 var tiles_in_rooms = []
 
 # Instantiate
@@ -33,7 +35,7 @@ var total_time = 0
 
 # Variables for placing stuff in map
 var entrance = Vector2i(0,0)
-var gold_ratio = 0.1
+var gold_ratio = 0.01
 
 
 
@@ -47,13 +49,13 @@ func _ready():
 			map_info[x].append(0)
 	# generate randomly seeded simplex noise map`
 	noise = FastNoiseLite.new()
-	noise.seed = randi_range(0, 10000)
+	noise.seed = 3#randi_range(0, 10000)
 	
 	GenMap()
 	draw_map()
-	print(entrance)
-	player.global_position=Vector2(entrance.x+1,entrance.y)
-	exit.global_position=Vector2(entrance.x,entrance.y)
+	if (player != null):
+		player.global_position=Vector2(entrance.x+(tile_size.x/2),entrance.y)
+	exit.global_position=Vector2(entrance.x-(tile_size.x/2),entrance.y)
 	
 	
 
@@ -61,13 +63,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	total_time += delta
-	if (total_time > 1000):
-		print(total_time)
-		noise.seed = randi_range(0, 10000)
-		GenMap()
-		draw_map()
-		total_time = 0
 	pass
 
 
@@ -79,7 +74,7 @@ func GenMap ():
 	noise.fractal_lacunarity = lac
 	noise.fractal_gain = gain
 	var noise_image = noise.get_image(map_size.x, map_size.y)
-	print(cut_off)
+	
 	for x in map_size.x:
 		for y in map_size.y:
 			if x >= border && x + border < map_size.x && y >= border && y + border < map_size.y:
@@ -211,7 +206,7 @@ func connect_rooms():
 					map_info[x][y] = 0
 				if (map_info[x][y+1] == 0 && map_info[x][y-1] == 0):
 					map_info[x][y] = 0
-	var room_index_map = find_all_rooms()
+	room_index_map = find_all_rooms()
 	
 
 func find_all_rooms():
@@ -252,6 +247,7 @@ func expand_room(room_id_map, x, y, id):
 			queue.append(next_pos)
 	tiles_in_rooms.append(room_size)
 	if (tiles_in_rooms.max() == room_size):
+		largest_room = id
 		entrance = Vector2i(x * tile_size.x,y*tile_size.y)
 		for xi in map_size.x:
 			for yi in map_size.y:
@@ -264,11 +260,12 @@ func expand_room(room_id_map, x, y, id):
 
 func place_items():
 	#Gold
-	#for x in map_size.x:
-	#	for y in map_size.y:
-	#		if (map_info[x][y] == 0 && randf() > gold_ratio):
-	#			var gold_instance = gold.instantiate()
-	#			gold_instance.global_position = Vector2(x * tile_size.x,y*tile_size.y)
-	#			add_child(gold_instance)
-	pass
+	for x in map_size.x:
+		for y in map_size.y:
+			if (map_info[x][y] == 0 && room_index_map[x][y] == largest_room && randf() < gold_ratio):
+				var gold_instance = gold.instantiate()
+				gold_instance.global_position = Vector2(x * tile_size.x,y*tile_size.y)
+				gold_instance.z_index = 90
+				%Gold_holder.add_child(gold_instance)
+	
 

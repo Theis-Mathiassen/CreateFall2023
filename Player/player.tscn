@@ -382,3 +382,15 @@ shadow_filter = 1
 shadow_filter_smooth = 3.0
 texture = ExtResource("7_wc7gq")
 texture_scale = 0.5
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.431373, 1, 0.0509804, 1)
+offset_left = -10.0
+offset_top = -24.0
+offset_right = 160.0
+offset_bottom = 13.0
+scale = Vector2(0.2, 0.2)
+max_value = 10.0
+show_percentage = false
+
+[node name="hp_regain_timer" type="Timer" parent="."]
