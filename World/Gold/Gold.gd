@@ -29,14 +29,12 @@ func _process(_delta):
 func _on_area_2d_body_entered(body: Player):
 	player = body
 	touched_by_player = true
-	print("hit")
 	
 	
 	
 		
 func _on_area_2d_body_exited(_body):
 	touched_by_player = false
-	print("left")
 	
 
 

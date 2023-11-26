@@ -18,7 +18,7 @@ var player_in_attack_range = false
 
 
 func _physics_process(delta):
-	print(player)
+	#print(player)
 	var dir = player.position - position
 	
 	if player_chase and player_seen:
@@ -43,7 +43,7 @@ func _physics_process(delta):
 func _on_detection_area_body_entered(body):
 	player_chase = true
 	if player_seen == false :
-		$AnimatedSprite2D.play("idle2")
+		$AnimatedSprite2D.play("idle1")
 		await get_tree().create_timer(1).timeout
 	player_seen = true
 
@@ -55,7 +55,7 @@ func _on_detection_area_body_exited(body):
 func _on_enemy_hitbox_area_entered(area):
 	if area.has_method("bullet") : 
 		bullet_hit = true
-		print("bullet = ", bullet_hit)
+		#print("bullet = ", bullet_hit)
 
 func _on_enemy_hitbox_body_entered(body):
 	if body.has_method("player") : 
@@ -80,7 +80,7 @@ func deal_damage() :
 			$take_damage_cooldown.start()
 			can_take_damage = false
 			bullet_hit = false
-			print("Bat health = ", health)
+			#print("Bat health = ", health)
 			if health <= 0:
 				self.queue_free()
 

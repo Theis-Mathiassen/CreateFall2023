@@ -22,8 +22,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	
-	print("the body has entered!")
+	#print("the body has entered!")
 	touching_player_2 = true
 	
 	pass # Replace with function body.
