@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://mu8lkrp64hhk"]
+[gd_scene load_steps=13 format=3 uid="uid://pmk66mqxt7jm"]
 
 [ext_resource type="Script" path="res://bat.gd" id="1_757pl"]
-[ext_resource type="Texture2D" uid="uid://bepngdym0oro8" path="res://World/Assets/Bat.png" id="1_xecur"]
-[ext_resource type="Texture2D" uid="uid://b4dvf8jdgrkpy" path="res://World/Assets/BatFlying.png" id="2_sgnok"]
+[ext_resource type="Texture2D" uid="uid://dhdi3tvu0f04m" path="res://World/Assets/Bat.png" id="1_xecur"]
+[ext_resource type="Texture2D" uid="uid://debd3jaam4yha" path="res://World/Assets/BatFlying.png" id="2_sgnok"]
 [ext_resource type="FontVariation" uid="uid://dyn3foi5ruqiw" path="res://Font/FontVariation.tres" id="4_4bstr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tukc"]
@@ -66,7 +66,7 @@ script = ExtResource("1_757pl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_5vb7l")
-animation = &"idle2"
+animation = &"idle1"
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 2

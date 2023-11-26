@@ -43,7 +43,7 @@ func _physics_process(delta):
 func _on_detection_area_body_entered(body):
 	player_chase = true
 	if player_seen == false :
-		$AnimatedSprite2D.play("idle2")
+		$AnimatedSprite2D.play("idle1")
 		await get_tree().create_timer(1).timeout
 	player_seen = true
 
