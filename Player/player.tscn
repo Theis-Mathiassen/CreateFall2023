@@ -410,7 +410,7 @@ shape = SubResource("RectangleShape2D_qbma6")
 zoom = Vector2(6, 6)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(62, -61)
+position = Vector2(2, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"

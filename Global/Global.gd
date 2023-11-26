@@ -55,3 +55,11 @@ func buy_bullets ():
 	if total_player_gold > bullet_cost:
 		total_player_gold -= bullet_cost
 		bullets += 10
+
+# Shop items : 
+var player_health = 10
+var player_max_speed = 20
+var player_light_radius = 20
+var player_attack_damage = 2
+var player_ammo = 0
+var player_bullet_damage = 3

@@ -1,24 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://ngrb7qqjkhcp"]
+[gd_scene load_steps=5 format=3 uid="uid://ngrb7qqjkhcp"]
 
 [ext_resource type="Script" path="res://Throwables/dynamite.gd" id="1_2r82p"]
-[ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="2_w2rrn"]
+[ext_resource type="Texture2D" uid="uid://bot05wjfvyvq" path="res://World/Assets/rock.png" id="2_rqv74"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5lrf"]
-size = Vector2(10, 36)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4bg2"]
+size = Vector2(10, 5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jbs1"]
+radius = 2.4735
 
 [node name="dynamite" type="Area2D"]
 script = ExtResource("1_2r82p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-scale = Vector2(0.0915833, 0.283203)
-texture = ExtResource("2_w2rrn")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_w5lrf")
+position = Vector2(-1, 0.5)
+shape = SubResource("RectangleShape2D_n4bg2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.23, 0.73)
+texture = ExtResource("2_rqv74")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(0, 0.5)
-scale = Vector2(0.5, 0.15)
+position = Vector2(-1, -4.76837e-07)
+scale = Vector2(0.7, 0.5)
 
+[node name="bullet_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_hitbox"]
+position = Vector2(-1, 0)
+scale = Vector2(2.83, 2.83)
+shape = SubResource("CircleShape2D_1jbs1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
