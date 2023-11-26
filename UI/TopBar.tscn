@@ -79,15 +79,16 @@ theme_override_font_sizes/font_size = 30
 text = "Warning! Make sure you meet the quota before the timer runs out!"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 1119.33
-offset_top = 560.0
-offset_right = 1261.33
-offset_bottom = 700.0
+offset_left = 1115.33
+offset_top = 523.333
+offset_right = 1263.33
+offset_bottom = 698.333
 theme_override_fonts/font = ExtResource("1_kx8tb")
 theme_override_font_sizes/font_size = 27
 text = "Controls:
 E - Mine ore
 Q - Attack
-F - Interact"
+F - Interact
+LMB - Shoot"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
