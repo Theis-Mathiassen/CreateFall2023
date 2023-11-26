@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4e6akwqys4p7"]
+[gd_scene load_steps=17 format=3 uid="uid://c4e6akwqys4p7"]
 
 [ext_resource type="Script" path="res://World/level2.gd" id="1_4x3fb"]
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ni4hg"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://mu8lkrp64hhk" path="res://bat.tscn" id="8_xiclq"]
 [ext_resource type="PackedScene" uid="uid://dyo8t3yepu4hg" path="res://Shared/Components/whiskey.tscn" id="10_et4ya"]
 [ext_resource type="Script" path="res://World/DoorToOutside.gd" id="11_1rg27"]
+[ext_resource type="Texture2D" uid="uid://booi51cllpj1l" path="res://UI/ToTown_sign.png" id="12_f2gb0"]
+[ext_resource type="Texture2D" uid="uid://cr5eh87br5rj4" path="res://UI/ToMine_sign.png" id="13_6nslk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
 texture = ExtResource("3_rpm5t")
@@ -237,6 +239,16 @@ shape = SubResource("RectangleShape2D_jkb68")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
+
+[node name="ToTownSign" type="Sprite2D" parent="."]
+position = Vector2(262.156, 554.889)
+scale = Vector2(0.566706, 0.566706)
+texture = ExtResource("12_f2gb0")
+
+[node name="ToMineSign" type="Sprite2D" parent="."]
+position = Vector2(425.253, 587.882)
+scale = Vector2(0.34991, 0.34991)
+texture = ExtResource("13_6nslk")
 
 [connection signal="body_entered" from="DoorToOutside" to="DoorToOutside" method="_on_body_entered"]
 [connection signal="body_exited" from="DoorToOutside" to="DoorToOutside" method="_on_body_exited"]

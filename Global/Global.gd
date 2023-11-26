@@ -18,8 +18,8 @@ var light_upgrade_costs = [300, 500, 800]
 var gun_upgrades = 0
 var gun_upgrade_costs = [300, 500, 800]
 
-var seconds = 5
-var minutes = 1
+var seconds = 55
+var minutes = 2
 var Dseconds = 0
 var DMinutes = 2
 

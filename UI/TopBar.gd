@@ -8,8 +8,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if Global.seconds == 0 and Global.minutes == 0:
-		Reset_Timer() 
+
 	
 	
 	pass # Replace with function body.
@@ -33,6 +32,20 @@ func _on_timer_timeout():
 			
 	if Global.minutes < 1:
 		warning.visible = true
+		
+	if Global.minutes == 0 and Global.seconds == 0:
+		if Global.total_player_gold < Global.gold_quota:
+			get_tree().change_scene_to_file("res://World/GameOver.tscn")
+		else:
+			Global.total_player_gold -= Global.gold_quota
+			Global.gold_quota *= 1.2
+			Global.stage_count += 1
+			Global.minutes = 2
+			Global.seconds = 55
+		
+		
+	
+		
 	
 	Global.seconds -= 1
 	time.text = str(Global.minutes)+":"+str(Global.seconds)

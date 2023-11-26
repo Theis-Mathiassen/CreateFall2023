@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6nkxm8pkhvbb"]
+[gd_scene load_steps=12 format=3 uid="uid://c6nkxm8pkhvbb"]
 
 [ext_resource type="Texture2D" uid="uid://crh05ssqswht2" path="res://World/Assets/OutDoorScene.png" id="1_dtmdl"]
 [ext_resource type="PackedScene" uid="uid://cya0tj8v6kkdl" path="res://World/door_to_inside.tscn" id="1_n4yqx"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="2_pflh8"]
 [ext_resource type="PackedScene" path="res://World/shop_access.tscn" id="4_gkerr"]
+[ext_resource type="FontVariation" uid="uid://dyn3foi5ruqiw" path="res://Font/FontVariation.tres" id="5_cc2ga"]
+[ext_resource type="PackedScene" uid="uid://b7d86ei0ty5an" path="res://UI/TopBar.tscn" id="6_a5kf4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3lma"]
 size = Vector2(36.5, 44)
@@ -106,5 +108,16 @@ shape = SubResource("RectangleShape2D_c3lma")
 
 [node name="ShopAccess" parent="." instance=ExtResource("4_gkerr")]
 position = Vector2(-188, 80)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -182.0
+offset_top = 57.0
+offset_right = -70.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("5_cc2ga")
+theme_override_font_sizes/font_size = 15
+text = "F to interact"
+
+[node name="Node" parent="." instance=ExtResource("6_a5kf4")]
 
 [connection signal="timeout" from="Timer" to="DoorToInside" method="_on_timer_timeout"]

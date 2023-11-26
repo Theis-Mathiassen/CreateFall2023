@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhf1s7up73q4u"]
+[gd_scene load_steps=5 format=3 uid="uid://bhf1s7up73q4u"]
 
 [ext_resource type="Script" path="res://Shared/Components/cave_exit.gd" id="1_g5466"]
 [ext_resource type="Texture2D" uid="uid://5hjv43lw0bjk" path="res://World/Assets/Laddder.png" id="2_15vru"]
+[ext_resource type="Texture2D" uid="uid://booi51cllpj1l" path="res://UI/ToTown_sign.png" id="3_uj1fn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qovc5"]
 
@@ -17,6 +18,11 @@ shape = SubResource("CircleShape2D_qovc5")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("2_15vru")
+
+[node name="ToTownSign" type="Sprite2D" parent="."]
+position = Vector2(25, 9)
+scale = Vector2(0.383353, 0.383353)
+texture = ExtResource("3_uj1fn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
