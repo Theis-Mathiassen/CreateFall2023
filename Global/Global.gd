@@ -1,7 +1,7 @@
 extends Node
 
 var stage_count = 1
-var total_player_gold = 0
+var total_player_gold = 9001
 var player_current_attack = false
 var player_health = 8
 var bullets = 10
@@ -27,29 +27,39 @@ var gold_quota = 250
 var enemy_attack_damage = 1 * self.stage_count
 
 func upgrade_boots():
+	if (Global.boots_upgrades >= Global.boots_upgrade_costs.size()-1):
+		return
 	if total_player_gold > boots_upgrade_costs[boots_upgrades]:
 		total_player_gold -= boots_upgrade_costs[boots_upgrades]
 		boots_upgrades += 1
 
 func upgrade_vest():
+	if (Global.vest_upgrades >= Global.vest_upgrade_costs.size()-1):
+		return
 	if total_player_gold > vest_upgrade_costs[vest_upgrades]:
 		total_player_gold -= vest_upgrade_costs[vest_upgrades]
 		vest_upgrades += 1
 
 func upgrade_pick():
+	if (Global.pick_upgrades >= Global.pick_upgrade_costs.size()-1):
+		return
 	if total_player_gold > pick_upgrade_costs[pick_upgrades]:
 		total_player_gold -= pick_upgrade_costs[pick_upgrades]
 		pick_upgrades += 1
 
 func upgrade_light():
+	if (Global.light_upgrades >= Global.light_upgrade_costs.size()-1):
+		return
 	if total_player_gold > light_upgrade_costs[light_upgrades]:
 		total_player_gold -= light_upgrade_costs[light_upgrades]
 		light_upgrades += 1
 
 func upgrade_gun():
+	if (Global.gun_upgrades >= Global.gun_upgrade_costs.size()-1):
+		return
 	if total_player_gold > gun_upgrade_costs[gun_upgrades]:
 		total_player_gold -= gun_upgrade_costs[gun_upgrades]
-		light_upgrades += 1
+		gun_upgrades += 1
 
 func buy_bullets ():
 	if total_player_gold > bullet_cost:
