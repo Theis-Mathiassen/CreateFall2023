@@ -200,31 +200,33 @@ position = Vector2(293.618, 555.466)
 position = Vector2(376.232, 549.89)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.164706, 0.113725, 0.0588235, 1)
 
 [node name="light_lower_left" parent="." instance=ExtResource("5_nbqpy")]
+visible = false
 position = Vector2(295, 581)
 scale = Vector2(1, 0.999999)
 
 [node name="light_lower_right" parent="." instance=ExtResource("5_nbqpy")]
+visible = false
 position = Vector2(378, 613)
 scale = Vector2(1, 0.999999)
 
 [node name="light_upper_left" parent="." instance=ExtResource("5_nbqpy")]
+visible = false
 position = Vector2(295, 536)
 scale = Vector2(1, 0.999999)
 
 [node name="light_upper_right" parent="." instance=ExtResource("5_nbqpy")]
-position = Vector2(375.223, 498.9)
+visible = false
+position = Vector2(375, 504)
 scale = Vector2(1, 0.999999)
 
 [node name="Gold" parent="." instance=ExtResource("4_s2apd")]
 position = Vector2(336.2, 590.882)
 
-[node name="bat" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_xiclq")]
+[node name="bat" parent="." instance=ExtResource("8_xiclq")]
 position = Vector2(426, 525)
-player = NodePath("../player")
 
 [node name="Node" parent="." instance=ExtResource("8_pmftk")]
 

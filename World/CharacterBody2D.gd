@@ -14,6 +14,7 @@ extends CharacterBody2D
 #@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var marker_2d = $Marker2D
 @onready var pickaxe_collision = %PickaxeCollision
+@onready var texture_light = %TextureLight
 
 var mining: bool = true
 
@@ -50,7 +51,6 @@ func get_input():
 	return input.normalized()
 	
 func player_movement(delta):
-	print(attack_in_progress)
 	# positive or negative 1 for x and y.
 	input = get_input()
 	if Input.is_action_pressed("Attack") and not attack_in_progress:
@@ -102,7 +102,7 @@ func player_movement(delta):
 		# speeds our character up
 		velocity += (input * acceleration * delta)
 		# stop at max speed
-		velocity = velocity.limit_length(max_speed)
+		velocity = velocity.limit_length(Global.player_max_speed)
 		
 	if not attack_in_progress:
 		move_and_slide()
@@ -119,14 +119,16 @@ func player_movement(delta):
 	
 	
 	if Input.is_action_just_pressed("left_mouse") and dynamite_off_cooldown and dynamite_equipped and not attack_in_progress:
-		dynamite_off_cooldown = false
-		var dynamite_instance = dynamite.instantiate()
-		dynamite_instance.rotation = marker_2d.rotation
-		dynamite_instance.global_position = marker_2d.global_position
-		add_child(dynamite_instance)
-		
-		await get_tree().create_timer(0.4).timeout
-		dynamite_off_cooldown = true
+		if Global.player_ammo > 0 : 
+			Global.player_ammo = Global.player_ammo - 1
+			dynamite_off_cooldown = false
+			var dynamite_instance = dynamite.instantiate()
+			dynamite_instance.rotation = marker_2d.rotation
+			dynamite_instance.global_position = marker_2d.global_position
+			add_child(dynamite_instance)
+			await get_tree().create_timer(0.4).timeout
+			dynamite_off_cooldown = true
+			
 
 
 func _on_player_hitbox_body_entered(body):
@@ -177,3 +179,5 @@ func update_health():
 		
 		
 
+func _on_ready():
+	texture_light.set_texture_scale(Global.player_light_radius)

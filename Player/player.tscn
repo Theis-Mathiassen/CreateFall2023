@@ -408,7 +408,7 @@ shape = SubResource("RectangleShape2D_qbma6")
 zoom = Vector2(6, 6)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(62, -61)
+position = Vector2(2, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle"
@@ -431,12 +431,11 @@ shape = SubResource("RectangleShape2D_sxrhy")
 disabled = true
 
 [node name="TextureLight" type="PointLight2D" parent="."]
-visible = false
+unique_name_in_owner = true
 energy = 0.7
 texture = ExtResource("7_wc7gq")
 
 [node name="Shadow" type="PointLight2D" parent="."]
-visible = false
 energy = 0.5
 shadow_enabled = true
 shadow_filter = 1
@@ -462,6 +461,7 @@ wait_time = 0.5
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="deal_attack_cooldown" to="." method="_on_deal_attack_cooldown_timeout"]

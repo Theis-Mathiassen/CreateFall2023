@@ -1,15 +1,14 @@
 extends CharacterBody2D
 
 
-@export var health = 4
-@export var max_speed = 20
+@export var health = 10
+@export var max_speed = 10
 @export var acceleration = 15
 @export var friction = 700
 @export var player : Node2D
 
 
 var player_chase = false
-var player_seen = false
 var can_take_damage = true
 var bullet_hit = false
 
@@ -19,7 +18,7 @@ var player_in_attack_range = false
 func _physics_process(delta):
 	var dir = player.position - position
 	
-	if player_chase and player_seen:
+	if player_chase :
 		velocity += dir*acceleration
 		velocity = velocity.limit_length(max_speed)
 		
@@ -37,11 +36,6 @@ func _physics_process(delta):
 
 func _on_detection_area_body_entered(body):
 	player_chase = true
-	if player_seen == false :
-		$AnimatedSprite2D.play("idle2")
-		await get_tree().create_timer(1).timeout
-	player_seen = true
-
 
 func _on_detection_area_body_exited(body):
 	player_chase = false 
