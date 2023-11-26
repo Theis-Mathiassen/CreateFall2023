@@ -56,10 +56,10 @@ tracks/3/path = NodePath("Icon:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.221763, 0.594127),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [2, 0, 1]
+"values": [2, 0, 1, 1]
 }
 
 [sub_resource type="Animation" id="Animation_sbdq2"]

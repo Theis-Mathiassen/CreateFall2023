@@ -17,6 +17,7 @@ var player_in_attack_range = false
 
 
 func _physics_process(delta):
+	print(player)
 	var dir = player.position - position
 	
 	if player_chase and player_seen:

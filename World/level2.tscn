@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://wmu6oqv7amit" path="res://Shared/Components/cave_entrance.tscn" id="5_eklv8"]
 [ext_resource type="PackedScene" uid="uid://d04d0f55uva31" path="res://World/minecart.tscn" id="5_n00wo"]
 [ext_resource type="PackedScene" uid="uid://qbsnniqv085h" path="res://World/standing_light.tscn" id="5_nbqpy"]
-[ext_resource type="PackedScene" path="res://UI/TopBar.tscn" id="8_pmftk"]
-[ext_resource type="PackedScene" uid="uid://pmk66mqxt7jm" path="res://bat.tscn" id="8_xiclq"]
+[ext_resource type="PackedScene" uid="uid://b7d86ei0ty5an" path="res://UI/TopBar.tscn" id="8_pmftk"]
+[ext_resource type="PackedScene" uid="uid://mu8lkrp64hhk" path="res://bat.tscn" id="8_xiclq"]
 [ext_resource type="PackedScene" path="res://Shared/Components/whiskey.tscn" id="10_et4ya"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
@@ -221,8 +221,9 @@ scale = Vector2(1, 0.999999)
 [node name="Gold" parent="." instance=ExtResource("4_s2apd")]
 position = Vector2(336.2, 590.882)
 
-[node name="bat" parent="." instance=ExtResource("8_xiclq")]
+[node name="bat" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_xiclq")]
 position = Vector2(426, 525)
+player = NodePath("../player")
 
 [node name="Node" parent="." instance=ExtResource("8_pmftk")]
 
