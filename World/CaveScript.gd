@@ -46,7 +46,7 @@ var entrance = Vector2i(0,0)
 var number_gold = 7 + 7*0.2 * (Global.stage_count)
 var number_bats = 20 + 20*0.2 * (Global.stage_count)
 var number_dogs = 2 + 2 * max(Global.stage_count-1, 0)
-var number_grips = 2 + 1 * max(Global.stage_count-3, 0)
+var number_grips = 0 + 1 * max(Global.stage_count-3, 0)
 var number_whiskey = 10 + 10*0.2 * (Global.stage_count)
 
 
