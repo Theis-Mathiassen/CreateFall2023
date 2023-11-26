@@ -1,7 +1,7 @@
 extends Node
 
 var stage_count = 1
-var total_player_gold = 9001
+var total_player_gold = 0
 var player_current_attack = false
 var player_health = 8
 var bullets = 10
@@ -26,6 +26,8 @@ var DMinutes = 2
 var gold_quota = 250
 var enemy_attack_damage = 1 * self.stage_count
 var recently_in_cave: bool = false
+
+var is_in_cave: bool = false
 
 func upgrade_boots():
 	if (Global.boots_upgrades >= Global.boots_upgrade_costs.size()-1):

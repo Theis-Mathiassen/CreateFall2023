@@ -15,6 +15,8 @@ extends CharacterBody2D
 @onready var marker_2d = $Marker2D
 @onready var pickaxe_collision = %PickaxeCollision
 @onready var texture_light = %TextureLight
+@onready var shadow = $Shadow
+
 
 var mining: bool = true
 
@@ -31,7 +33,16 @@ var dynamite_off_cooldown = true
 var dynamite = preload("res://Throwables/dynamite.tscn")
 
 
+
 func _physics_process(delta):
+	
+	if Global.is_in_cave:
+
+		shadow.visible = true
+	else:
+	
+		shadow.visible = false
+		
 	print(self.global_position)
 	player_movement(delta)
 	enemy_attack()
