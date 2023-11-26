@@ -480,7 +480,6 @@ shape = SubResource("RectangleShape2D_sxrhy")
 disabled = true
 
 [node name="TextureLight" type="PointLight2D" parent="."]
-unique_name_in_owner = true
 energy = 0.7
 texture = ExtResource("7_wc7gq")
 
@@ -512,7 +511,8 @@ wait_time = 0.5
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="ready" from="." to="." method="_on_ready"]
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="deal_attack_cooldown" to="." method="_on_deal_attack_cooldown_timeout"]

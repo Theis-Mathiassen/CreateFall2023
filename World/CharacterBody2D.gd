@@ -32,6 +32,7 @@ var dynamite = preload("res://Throwables/dynamite.tscn")
 
 
 func _physics_process(delta):
+	print(self.global_position)
 	player_movement(delta)
 	enemy_attack()
 	attack()

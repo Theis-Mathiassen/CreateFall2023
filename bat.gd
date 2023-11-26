@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var acceleration = 15
 @export var friction = 700
 @export var player : Node2D
+@onready var label = $Label
 
 
 var player_chase = false
@@ -21,10 +22,13 @@ func _physics_process(delta):
 	var dir = player.position - position
 	
 	if player_chase and player_seen:
+		label.visible = true
 		velocity += dir*acceleration
 		velocity = velocity.limit_length(max_speed)
 		
 		$AnimatedSprite2D.play("moving")
+	else:
+		label.visible = false
 	#else: 
 		#if player_seen:
 		#	$AnimatedSprite2D.play("idle2")

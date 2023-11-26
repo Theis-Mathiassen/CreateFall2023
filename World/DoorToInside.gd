@@ -1,7 +1,7 @@
 extends Area2D
 
 var touching_player: bool
-var ready_to_enter: bool = false
+var ready_to_enter: bool = true
 @onready var timer = $"../Timer"
 
 
@@ -13,7 +13,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if ready_to_enter and touching_player and Input.is_action_pressed("Interact"):
+	print(ready_to_enter)
+	print(touching_player)
+	if ready_to_enter and touching_player and Input.is_action_just_released("Interact"):
 		get_tree().change_scene_to_file("res://World/level2.tscn")
 	#print(touching_player)
 	pass
