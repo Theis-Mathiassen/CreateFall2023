@@ -5,3 +5,4 @@
 [node name="Level3" type="Node2D"]
 
 [node name="Cave" parent="." instance=ExtResource("1_cpeey")]
+z_index = 2

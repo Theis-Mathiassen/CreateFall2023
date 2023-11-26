@@ -31,6 +31,7 @@ text = "Whiskey"
 
 [node name="Label" type="Label" parent="Label"]
 texture_filter = 2
+layout_mode = 0
 offset_left = 6.66667
 offset_top = 13.3333
 offset_right = 39.6667
