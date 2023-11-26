@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4e6akwqys4p7"]
+[gd_scene load_steps=15 format=3 uid="uid://c4e6akwqys4p7"]
 
 [ext_resource type="Script" path="res://World/level2.gd" id="1_4x3fb"]
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ni4hg"]
@@ -6,11 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://cuugp74vbg5nb" path="res://World/Assets/tileset.png" id="3_rpm5t"]
 [ext_resource type="PackedScene" uid="uid://de2v1quc4h63b" path="res://World/Gold/Gold.tscn" id="4_s2apd"]
 [ext_resource type="PackedScene" uid="uid://wmu6oqv7amit" path="res://Shared/Components/cave_entrance.tscn" id="5_eklv8"]
-[ext_resource type="PackedScene" uid="uid://d04d0f55uva31" path="res://World/minecart.tscn" id="5_n00wo"]
 [ext_resource type="PackedScene" uid="uid://qbsnniqv085h" path="res://World/standing_light.tscn" id="5_nbqpy"]
-[ext_resource type="PackedScene" uid="uid://b7d86ei0ty5an" path="res://UI/TopBar.tscn" id="8_pmftk"]
-[ext_resource type="PackedScene" uid="uid://mu8lkrp64hhk" path="res://bat.tscn" id="8_xiclq"]
-[ext_resource type="PackedScene" uid="uid://dyo8t3yepu4hg" path="res://Shared/Components/whiskey.tscn" id="10_et4ya"]
+[ext_resource type="PackedScene" path="res://UI/TopBar.tscn" id="8_pmftk"]
+[ext_resource type="PackedScene" uid="uid://pmk66mqxt7jm" path="res://bat.tscn" id="8_xiclq"]
+[ext_resource type="PackedScene" path="res://Shared/Components/whiskey.tscn" id="10_et4ya"]
 [ext_resource type="Script" path="res://World/DoorToOutside.gd" id="11_1rg27"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
@@ -197,9 +196,6 @@ position = Vector2(403.24, 587.882)
 
 [node name="player" parent="." instance=ExtResource("2_buv0e")]
 position = Vector2(293.618, 555.466)
-
-[node name="Minecart" parent="." instance=ExtResource("5_n00wo")]
-position = Vector2(376.232, 549.89)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.164706, 0.113725, 0.0588235, 1)
