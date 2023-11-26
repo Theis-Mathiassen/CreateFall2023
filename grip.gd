@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-@export var health = 10
-@export var max_speed = 10
+@export var health = 8
+@export var max_speed = 50
 @export var acceleration = 15
 @export var friction = 700
 @export var player : Node2D

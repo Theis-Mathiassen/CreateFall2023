@@ -33,6 +33,7 @@ func upgrade_boots():
 	if total_player_gold > boots_upgrade_costs[boots_upgrades]:
 		total_player_gold -= boots_upgrade_costs[boots_upgrades]
 		boots_upgrades += 1
+	player_max_speed = 40 + 40*self.boots_upgrades
 
 func upgrade_vest():
 	if (Global.vest_upgrades >= Global.vest_upgrade_costs.size()-1):
@@ -40,6 +41,7 @@ func upgrade_vest():
 	if total_player_gold > vest_upgrade_costs[vest_upgrades]:
 		total_player_gold -= vest_upgrade_costs[vest_upgrades]
 		vest_upgrades += 1
+	player_max_health = 8 + 2*self.vest_upgrades
 
 func upgrade_pick():
 	if (Global.pick_upgrades >= Global.pick_upgrade_costs.size()-1):
@@ -47,6 +49,7 @@ func upgrade_pick():
 	if total_player_gold > pick_upgrade_costs[pick_upgrades]:
 		total_player_gold -= pick_upgrade_costs[pick_upgrades]
 		pick_upgrades += 1
+	player_attack_damage = 2 + self.pick_upgrades
 
 func upgrade_light():
 	if (Global.light_upgrades >= Global.light_upgrade_costs.size()-1):
@@ -54,6 +57,7 @@ func upgrade_light():
 	if total_player_gold > light_upgrade_costs[light_upgrades]:
 		total_player_gold -= light_upgrade_costs[light_upgrades]
 		light_upgrades += 1
+	player_light_radius = 1 + 0.5*self.light_upgrades
 
 func upgrade_gun():
 	if (Global.gun_upgrades >= Global.gun_upgrade_costs.size()-1):
@@ -61,15 +65,16 @@ func upgrade_gun():
 	if total_player_gold > gun_upgrade_costs[gun_upgrades]:
 		total_player_gold -= gun_upgrade_costs[gun_upgrades]
 		gun_upgrades += 1
+	player_bullet_damage = 1 + self.gun_upgrades
 
 func buy_bullets ():
 	if total_player_gold > bullet_cost:
 		total_player_gold -= bullet_cost
-		bullets += 10
+		player_ammo += 10
 
 # Shop items : 
 var player_max_health = 8 + 2*self.vest_upgrades
-var player_max_speed = 20 + 5*self.boots_upgrades
+var player_max_speed = 40 + 40*self.boots_upgrades
 var player_light_radius = 1 + 0.5*self.light_upgrades
 var player_attack_damage = 2 + self.pick_upgrades
 var player_ammo = self.bullets

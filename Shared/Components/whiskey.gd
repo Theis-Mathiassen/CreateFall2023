@@ -16,7 +16,7 @@ func _on_body_entered(body):
 	audio_stream_player.play()
 	
 	Global.player_health += 2
-	Global.player_health = Global.player_health.limit_length(Global.player_max_health)
+	Global.player_health = min(Global.player_health, Global.player_max_health)
 	self.visible = false
 	await audio_stream_player.finished
 	queue_free()
