@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dr24s6rc63ylv"]
+[gd_scene load_steps=19 format=3 uid="uid://dr24s6rc63ylv"]
 
 [ext_resource type="Script" path="res://World/CharacterBody2D.gd" id="1_6ne0w"]
 [ext_resource type="Texture2D" uid="uid://c8qc3alcxxjd5" path="res://Player/moleidle.png" id="2_tn8dn"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://d3owrb5lv2c5w" path="res://Player/molerunningup.png" id="5_wjjaa"]
 [ext_resource type="Texture2D" uid="uid://doi0i87n5e7qo" path="res://Player/mining.png" id="6_4epr6"]
 [ext_resource type="Texture2D" uid="uid://gh5b5tojl00g" path="res://UI/Assets/light_texture.png" id="7_wc7gq"]
-[ext_resource type="AudioStream" uid="uid://b4eu2h3ykajbh" path="res://Sound/Effects/Character/WalkingSoft.mp3" id="8_fwq2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qbma6"]
 size = Vector2(8, 16)
@@ -57,7 +56,7 @@ tracks/3/path = NodePath("Icon:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.219587),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [2, 0, 1]
@@ -220,7 +219,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_4hwr0"]
 resource_name = "Running"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -269,25 +267,9 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
-tracks/4/type = "audio"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer2D")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_fwq2m")
-}],
-"times": PackedFloat32Array(-2.46356)
-}
-tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_2itkc"]
 resource_name = "RunningDown"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -331,30 +313,14 @@ tracks/3/path = NodePath("Icon:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.163112, 0.33493, 0.506748, 0.667684),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
-tracks/4/type = "audio"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer2D")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_fwq2m")
-}],
-"times": PackedFloat32Array(-2.86182)
-}
-tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_il130"]
 resource_name = "RunningUp"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -398,26 +364,11 @@ tracks/3/path = NodePath("Icon:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.154407, 0.310991, 0.478456, 0.65245),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
-tracks/4/type = "audio"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AudioStreamPlayer2D")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_fwq2m")
-}],
-"times": PackedFloat32Array(-4.94453)
-}
-tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_frhjk"]
 _data = {
@@ -484,6 +435,7 @@ energy = 0.7
 texture = ExtResource("7_wc7gq")
 
 [node name="Shadow" type="PointLight2D" parent="."]
+visible = false
 energy = 0.5
 shadow_enabled = true
 shadow_filter = 1
@@ -508,10 +460,6 @@ wait_time = 0.5
 
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

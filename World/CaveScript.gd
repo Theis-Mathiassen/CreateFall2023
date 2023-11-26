@@ -41,6 +41,7 @@ var gold_ratio = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.is_in_cave = true
 	tile_size = Vector2i(tiles.tile_set.tile_size.x, tiles.tile_set.tile_size.y)
 	
 	for x in range(map_size.x):

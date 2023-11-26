@@ -1,26 +1,152 @@
-[gd_scene load_steps=3 format=3 uid="uid://wn4kjmnwlqtd"]
+[gd_scene load_steps=7 format=3 uid="uid://wn4kjmnwlqtd"]
 
-[ext_resource type="Texture2D" uid="uid://brdyfw4ny2p2v" path="res://UI/Assets/GAMEOVER.png" id="1_1t1fh"]
 [ext_resource type="Script" path="res://World/GameOver.gd" id="1_4volj"]
+[ext_resource type="Texture2D" uid="uid://dmsgmx3h3v2ew" path="res://World/Assets/game_over_screen.png" id="2_8qk4x"]
+[ext_resource type="FontVariation" uid="uid://dyn3foi5ruqiw" path="res://Font/FontVariation.tres" id="2_xlx6y"]
+
+[sub_resource type="Animation" id="Animation_dp2co"]
+resource_name = "GameOver"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gameover:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_8qk4x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gameover:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gameover:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gameover:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8, 1.1, 1.5, 1.9, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_mkct2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gameover:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_8qk4x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gameover:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gameover:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gameover:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_or0ln"]
+_data = {
+"GameOver": SubResource("Animation_dp2co"),
+"RESET": SubResource("Animation_mkct2")
+}
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_4volj")
 
-[node name="Gameover" type="Sprite2D" parent="."]
-z_index = 2
-texture_filter = 1
-position = Vector2(924, 541)
-scale = Vector2(17.2813, 17.2813)
-texture = ExtResource("1_1t1fh")
+[node name="Button" type="Button" parent="."]
+z_index = 6
+offset_left = 721.0
+offset_top = 449.0
+offset_right = 1202.0
+offset_bottom = 658.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xlx6y")
+theme_override_font_sizes/font_size = 45
+text = "Play Again"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1979.0
-offset_bottom = 1158.0
-color = Color(0, 0, 0, 1)
+[node name="Gameover" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(948, 542)
+scale = Vector2(4.3211, 4.3211)
+texture = ExtResource("2_8qk4x")
+hframes = 8
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+z_index = -1
 color = Color(0, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_or0ln")
+}
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

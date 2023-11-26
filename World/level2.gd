@@ -4,6 +4,7 @@ var hole_position = Vector2(396.2769, 581.6954)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.is_in_cave = false
 	print("IN CAVE?" + str(Global.recently_in_cave))
 	if Global.recently_in_cave == true:		
 		player.global_position = hole_position
