@@ -15,11 +15,9 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print("Enter")
 	touching_player = true
 
 func _on_body_exited(body):
-	print("Exit")
 	touching_player = false
 
 

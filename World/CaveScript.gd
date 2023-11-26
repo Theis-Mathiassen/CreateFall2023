@@ -5,6 +5,9 @@ var tiles : TileMap = $Floor
 @onready var exit = $Cave_exits
 
 var gold = preload("res://World/Gold/Gold.tscn")
+var bat_spawner = preload("res://enemy_spawner.tscn")
+
+
 
 var border = 1
 var map_size = Vector2i(64, 64)
@@ -41,6 +44,8 @@ var gold_ratio = 0.01
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	
 	tile_size = Vector2i(tiles.tile_set.tile_size.x, tiles.tile_set.tile_size.y)
 	
 	for x in range(map_size.x):
@@ -267,5 +272,15 @@ func place_items():
 				gold_instance.global_position = Vector2(x * tile_size.x,y*tile_size.y)
 				gold_instance.z_index = 90
 				%Gold_holder.add_child(gold_instance)
-	
+	# Enemies
+	for x in map_size.x:
+		for y in map_size.y:
+			if (map_info[x][y] == 0 && room_index_map[x][y] == largest_room && randf() < 0.001):
+				print("Enemy_spawner")
+				var enemy_spawner_instance = bat_spawner.instantiate()
+				enemy_spawner_instance.global_position = Vector2(x * tile_size.x,y*tile_size.y)
+				enemy_spawner_instance.z_index = 80
+				enemy_spawner_instance.enemy = preload("res://bat.tscn")
+				enemy_spawner_instance.player = player
+				add_child(enemy_spawner_instance)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bt2l4vhq2qjip"]
+[gd_scene load_steps=14 format=3 uid="uid://jg78yodjad7d"]
 
 [ext_resource type="Texture2D" uid="uid://bupevefuni3sc" path="res://World/Assets/VultureIdle.png" id="1_h61t5"]
 [ext_resource type="Texture2D" uid="uid://dscicqevkpr38" path="res://World/Assets/VultureFlying.png" id="2_o1m5i"]
@@ -60,7 +60,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uuixs"]
-radius = 110.549
+radius = 344.023
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aollj"]
 radius = 14.0

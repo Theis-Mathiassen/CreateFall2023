@@ -13,7 +13,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print("Touching: " + str(touching_player_2))
+	#print("Touching: " + str(touching_player_2))
 	if ready_to_enter and touching_player_2 and Input.is_action_pressed("Interact"):
 		get_tree().change_scene_to_file("res://World/level_outside.tscn")
 	#print(touching_player)
@@ -21,7 +21,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print("the body has entered!")
+	#print("the body has entered!")
 	touching_player_2 = true
 	
 	pass # Replace with function body.
