@@ -14,6 +14,7 @@ extends CharacterBody2D
 #@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var marker_2d = $Marker2D
 @onready var pickaxe_collision = %PickaxeCollision
+@onready var texture_light = %TextureLight
 
 var mining: bool = true
 
@@ -177,3 +178,5 @@ func update_health():
 		
 		
 
+func _on_ready():
+	%TextureLight.set_texture_scale(Global.player_light_radius)

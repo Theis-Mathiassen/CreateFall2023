@@ -460,6 +460,7 @@ wait_time = 0.5
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="deal_attack_cooldown" to="." method="_on_deal_attack_cooldown_timeout"]
