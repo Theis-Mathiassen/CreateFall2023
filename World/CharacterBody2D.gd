@@ -49,7 +49,6 @@ func get_input():
 	return input.normalized()
 	
 func player_movement(delta):
-	print(attack_in_progress)
 	# positive or negative 1 for x and y.
 	input = get_input()
 	if Input.is_action_pressed("Attack") and not attack_in_progress:
