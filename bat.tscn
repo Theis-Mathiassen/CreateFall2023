@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://mu8lkrp64hhk"]
+[gd_scene load_steps=12 format=3 uid="uid://pmk66mqxt7jm"]
 
 [ext_resource type="Script" path="res://bat.gd" id="1_757pl"]
 [ext_resource type="Texture2D" uid="uid://dhdi3tvu0f04m" path="res://World/Assets/Bat.png" id="1_xecur"]
 [ext_resource type="Texture2D" uid="uid://debd3jaam4yha" path="res://World/Assets/BatFlying.png" id="2_sgnok"]
-[ext_resource type="AudioStream" uid="uid://cpmt4f1ef2rg3" path="res://Sound/Effects/Items/explosion.mp3" id="4_sxink"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tukc"]
 atlas = ExtResource("1_xecur")
@@ -62,6 +61,10 @@ radius = 7.0
 
 [node name="bat" type="CharacterBody2D"]
 script = ExtResource("1_757pl")
+health = null
+max_speed = null
+acceleration = null
+friction = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -87,13 +90,10 @@ shape = SubResource("CircleShape2D_h16mw")
 
 [node name="take_damage_cooldown" type="Timer" parent="."]
 wait_time = 0.5
-[node name="Whiskey" type="AudioStreamPlayer2D" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("4_sxink")
-volume_db = -7.268
 
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="area_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="body_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]
 [connection signal="body_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_exited"]
 [connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]
