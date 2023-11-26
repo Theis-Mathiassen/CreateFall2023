@@ -68,7 +68,7 @@ func buy_bullets ():
 
 # Shop items : 
 var player_max_health = 8 + 2*self.vest_upgrades
-var player_max_speed = 20 + 5*self.boots_upgrades
+var player_max_speed = 25 + 5*self.boots_upgrades
 var player_light_radius = 1 + 0.5*self.light_upgrades
 var player_attack_damage = 2 + self.pick_upgrades
 var player_ammo = self.bullets
