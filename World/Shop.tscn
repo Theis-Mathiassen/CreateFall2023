@@ -1,0 +1,204 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfxeba51v5ui7"]
+
+[ext_resource type="Texture2D" uid="uid://cjih35afpacgk" path="res://World/Assets/StoreSign.png" id="1_jbaot"]
+[ext_resource type="Script" path="res://World/Shop.gd" id="1_wvrgs"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_wvrgs")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 15.975
+anchor_top = 12.3
+anchor_right = 15.975
+anchor_bottom = 12.3
+offset_left = -523.0
+offset_top = -169.0
+offset_right = 535.0
+offset_bottom = 173.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cowboy_boots" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -137.0
+offset_right = 302.0
+offset_bottom = -51.0
+grow_vertical = 2
+text = "Buy Cowboy boots"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Cowboy_boots"]
+z_index = -5
+texture_filter = 1
+position = Vector2(185, 46)
+scale = Vector2(3.04647, 1.44463)
+texture = ExtResource("1_jbaot")
+
+[node name="Label" type="Label" parent="Control/Cowboy_boots"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 281.0
+offset_top = 31.0
+offset_right = 320.0
+offset_bottom = 57.0
+text = "800$"
+
+[node name="Cowboy_vest" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 368.0
+offset_top = -138.0
+offset_right = 730.0
+offset_bottom = -52.0
+grow_vertical = 2
+text = "Buy Cowboy vest"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Cowboy_vest"]
+z_index = -5
+texture_filter = 1
+position = Vector2(185, 46)
+scale = Vector2(3.04647, 1.44463)
+texture = ExtResource("1_jbaot")
+
+[node name="Label" type="Label" parent="Control/Cowboy_vest"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 281.0
+offset_top = 31.0
+offset_right = 320.0
+offset_bottom = 57.0
+text = "800$"
+
+[node name="Goldminers_pick" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -4.0
+offset_right = 310.0
+offset_bottom = 82.0
+grow_vertical = 2
+text = "Buy Goldminers pick"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Goldminers_pick"]
+z_index = -5
+texture_filter = 1
+position = Vector2(185, 46)
+scale = Vector2(3.04647, 1.44463)
+texture = ExtResource("1_jbaot")
+
+[node name="Label" type="Label" parent="Control/Goldminers_pick"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 281.0
+offset_top = 31.0
+offset_right = 320.0
+offset_bottom = 57.0
+text = "800$"
+
+[node name="Fireflies" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 360.0
+offset_right = 722.0
+offset_bottom = 86.0
+grow_vertical = 2
+text = "Buy More fireflies"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Fireflies"]
+z_index = -5
+texture_filter = 1
+position = Vector2(185, 46)
+scale = Vector2(3.04647, 1.44463)
+texture = ExtResource("1_jbaot")
+
+[node name="Label" type="Label" parent="Control/Fireflies"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 281.0
+offset_top = 31.0
+offset_right = 320.0
+offset_bottom = 57.0
+text = "800$"
+
+[node name="Bullets" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 768.0
+offset_top = -6.0
+offset_right = 1130.0
+offset_bottom = 80.0
+grow_vertical = 2
+text = "Buy More bullets"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Bullets"]
+z_index = -5
+texture_filter = 1
+position = Vector2(185, 46)
+scale = Vector2(3.04647, 1.44463)
+texture = ExtResource("1_jbaot")
+
+[node name="Label" type="Label" parent="Control/Bullets"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 281.0
+offset_top = 31.0
+offset_right = 320.0
+offset_bottom = 57.0
+text = "800$"
+
+[node name="Sturdier_gun" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 772.0
+offset_top = -139.0
+offset_right = 1134.0
+offset_bottom = -53.0
+grow_vertical = 2
+text = "Buy Sturdier gun"
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/Sturdier_gun"]
+z_index = -5
+texture_filter = 1
+position = Vector2(185, 46)
+scale = Vector2(3.04647, 1.44463)
+texture = ExtResource("1_jbaot")
+
+[node name="Label" type="Label" parent="Control/Sturdier_gun"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 281.0
+offset_top = 31.0
+offset_right = 320.0
+offset_bottom = 57.0
+text = "800$"
+
+[connection signal="pressed" from="Control/Cowboy_boots" to="." method="_on_cowboy_boots_pressed"]
+[connection signal="pressed" from="Control/Cowboy_vest" to="." method="_on_cowboy_vest_pressed"]
+[connection signal="pressed" from="Control/Goldminers_pick" to="." method="_on_goldminers_pick_pressed"]
+[connection signal="pressed" from="Control/Fireflies" to="." method="_on_fireflies_pressed"]
+[connection signal="pressed" from="Control/Bullets" to="." method="_on_bullets_pressed"]
+[connection signal="pressed" from="Control/Sturdier_gun" to="." method="_on_sturdier_gun_pressed"]

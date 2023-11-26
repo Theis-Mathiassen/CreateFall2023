@@ -1,4 +1,5 @@
 extends ProgressBar
+@onready var time = $"../Time"
 
 
 func update_health():
