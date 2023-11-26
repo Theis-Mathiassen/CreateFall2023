@@ -1,3 +1,4 @@
+class_name Enemy_Spawner
 extends Node2D
 
 
@@ -9,8 +10,12 @@ extends Node2D
 #Used to count how many seconds have passed
 var counter = 0
 
-var enemy = preload("res://Enemy.tscn")
+@export var enemy : PackedScene
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	if enemy == null:
+		enemy = preload("res://Enemy.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -27,6 +32,7 @@ func _on_timer_timeout():
 		#if (12 > 10): #Potential for no spawning if player is near
 		var enemy_instance = enemy.instantiate()
 		enemy_instance.player = player
+		
 		add_child(enemy_instance)
 		
 		

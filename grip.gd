@@ -70,7 +70,7 @@ func deal_damage() :
 			$take_damage_cooldown.start()
 			can_take_damage = false
 			bullet_hit = false
-			print("Bat health = ", health)
+			#print("Bat health = ", health)
 			if health <= 0:
 				self.queue_free()
 

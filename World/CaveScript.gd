@@ -5,6 +5,10 @@ var tiles : TileMap = $Floor
 @onready var exit = $Cave_exits
 
 var gold = preload("res://World/Gold/Gold.tscn")
+var bat_spawner = preload("res://enemy_spawner.tscn")
+var bat = preload("res://bat.tscn")
+
+
 
 var border = 1
 var map_size = Vector2i(64, 64)
@@ -15,6 +19,7 @@ var tile_size
 var number_rooms = 0
 var largest_room = 0
 var tiles_in_rooms = []
+var tiles_in_largest_room = []
 
 # Instantiate
 var noise
@@ -35,7 +40,8 @@ var total_time = 0
 
 # Variables for placing stuff in map
 var entrance = Vector2i(0,0)
-var gold_ratio = 0.01
+var number_gold = 7 + 7*0.2 * (Global.stage_count+1)
+var number_bats = 20 + 20*0.2 * (Global.stage_count+1)
 
 
 
@@ -228,11 +234,13 @@ func expand_room(room_id_map, x, y, id):
 	var room_size = 0;
 	var cur_pos = Vector2i(x,y)
 	var queue = []
+	var tiles_in_room = []
 	queue.append(cur_pos)
 	
 	while queue.is_empty() == false:
 		cur_pos = queue.pop_back()
 		room_id_map[cur_pos.x][cur_pos.y] = id
+		tiles_in_room.append(cur_pos)
 		room_size += 1
 		var next_pos = Vector2i(min(cur_pos.x + 1, map_size.x-1),cur_pos.y)
 		if (map_info[next_pos.x][next_pos.y] == 0 && room_id_map[next_pos.x][next_pos.y] != id):
@@ -249,6 +257,7 @@ func expand_room(room_id_map, x, y, id):
 	tiles_in_rooms.append(room_size)
 	if (tiles_in_rooms.max() == room_size):
 		largest_room = id
+		tiles_in_largest_room = tiles_in_room
 		entrance = Vector2i(x * tile_size.x,y*tile_size.y)
 		for xi in map_size.x:
 			for yi in map_size.y:
@@ -261,12 +270,19 @@ func expand_room(room_id_map, x, y, id):
 
 func place_items():
 	#Gold
-	for x in map_size.x:
-		for y in map_size.y:
-			if (map_info[x][y] == 0 && room_index_map[x][y] == largest_room && randf() < gold_ratio):
-				var gold_instance = gold.instantiate()
-				gold_instance.global_position = Vector2(x * tile_size.x,y*tile_size.y)
-				gold_instance.z_index = 90
-				%Gold_holder.add_child(gold_instance)
+	for i in number_gold:
+		var loc = tiles_in_largest_room.pick_random()
+		var gold_instance = gold.instantiate()
+		gold_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
+		gold_instance.z_index = 90
+		%Gold_holder.add_child(gold_instance)
 	
+				
+	# Enemies
+	for i in number_bats:
+		var bat_instance = bat.instantiate()
+		bat_instance.player = player
+		add_child(bat_instance)
+		print("Bat")
+		
 
