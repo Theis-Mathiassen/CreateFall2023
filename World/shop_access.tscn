@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxcxcfy844wl0"]
+
+[ext_resource type="Script" path="res://World/shop_access.gd" id="1_cvxef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_va0to"]
+size = Vector2(116, 90)
+
+[node name="ShopAccess" type="Area2D"]
+position = Vector2(-48, 35)
+script = ExtResource("1_cvxef")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(48, -35)
+shape = SubResource("RectangleShape2D_va0to")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
