@@ -5,8 +5,11 @@ var tiles : TileMap = $Floor
 @onready var exit = $Cave_exits
 
 var gold = preload("res://World/Gold/Gold.tscn")
+var whiskey = preload("res://Shared/Components/whiskey.tscn")
 var bat_spawner = preload("res://enemy_spawner.tscn")
 var bat = preload("res://bat.tscn")
+var dog = preload("res://dog.tscn")
+var grip = preload("res://grip.tscn")
 
 
 
@@ -40,8 +43,11 @@ var total_time = 0
 
 # Variables for placing stuff in map
 var entrance = Vector2i(0,0)
-var number_gold = 7 + 7*0.2 * (Global.stage_count+1)
-var number_bats = 20 + 20*0.2 * (Global.stage_count+1)
+var number_gold = 7 + 7*0.2 * (Global.stage_count)
+var number_bats = 20 + 20*0.2 * (Global.stage_count)
+var number_dogs = 2 + 2 * max(Global.stage_count-1, 0)
+var number_grips = 2 + 1 * max(Global.stage_count-3, 0)
+var number_whiskey = 10 + 10*0.2 * (Global.stage_count)
 
 
 
@@ -276,13 +282,39 @@ func place_items():
 		gold_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
 		gold_instance.z_index = 90
 		%Gold_holder.add_child(gold_instance)
+		
+	#Whiskey
+	for i in number_whiskey:
+		var loc = tiles_in_largest_room.pick_random()
+		var whiskey_instance = whiskey.instantiate()
+		whiskey_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
+		whiskey_instance.z_index = 90
+		%Gold_holder.add_child(whiskey_instance)
 	
 				
 	# Enemies
 	for i in number_bats:
+		var loc = tiles_in_largest_room.pick_random()
 		var bat_instance = bat.instantiate()
 		bat_instance.player = player
+		bat_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
 		add_child(bat_instance)
 		print("Bat")
-		
+	
+	# Enemies
+	for i in number_dogs:
+		var loc = tiles_in_largest_room.pick_random()
+		var dog_instance = dog.instantiate()
+		dog_instance.player = player
+		dog_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
+		add_child(dog_instance)
+		print("Dog")
+	# Enemies
+	for i in number_grips:
+		var loc = tiles_in_largest_room.pick_random()
+		var grip_instance = grip.instantiate()
+		grip_instance.player = player
+		grip_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
+		add_child(grip_instance)
+		print("Grip")
 

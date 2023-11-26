@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c72ibq0taeevp"]
+[gd_scene load_steps=11 format=3 uid="uid://dy106vkcep3cd"]
 
 [ext_resource type="Texture2D" uid="uid://c7fj1e54bls2w" path="res://World/Assets/PrairieDog.png" id="1_um62k"]
 [ext_resource type="Texture2D" uid="uid://c5hibu6xb2q6a" path="res://World/Assets/PrairieDogRun.png" id="2_u0sx2"]
@@ -48,12 +48,12 @@ size = Vector2(13, 24)
 radius = 16.2788
 
 [node name="dog" type="CharacterBody2D"]
+script = ExtResource("3_fnlnd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_k2abf")
 animation = &"idle"
-script = ExtResource("3_fnlnd")
 
 [node name="detection_area" type="Area2D" parent="."]
 collision_layer = 2

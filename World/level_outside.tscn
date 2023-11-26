@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://crh05ssqswht2" path="res://World/Assets/OutDoorScene.png" id="1_dtmdl"]
 [ext_resource type="PackedScene" uid="uid://cya0tj8v6kkdl" path="res://World/door_to_inside.tscn" id="1_n4yqx"]
 [ext_resource type="PackedScene" uid="uid://dr24s6rc63ylv" path="res://Player/player.tscn" id="2_pflh8"]
-[ext_resource type="PackedScene" path="res://World/shop_access.tscn" id="4_gkerr"]
+[ext_resource type="PackedScene" uid="uid://dxcxcfy844wl0" path="res://World/shop_access.tscn" id="4_gkerr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c3lma"]
 size = Vector2(36.5, 44)

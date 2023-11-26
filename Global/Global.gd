@@ -6,6 +6,10 @@ var player_current_attack = false
 var player_health = 8
 var bullets = 10
 
+var bat_killed = false
+var gold_mined = false
+var whiskey_drunk = false
+
 var bullet_cost = 10
 var boots_upgrades = 0
 var boots_upgrade_costs = [300, 500, 800]
