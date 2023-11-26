@@ -43,7 +43,7 @@ func _physics_process(delta):
 	
 		shadow.visible = false
 		
-	print(self.global_position)
+	#print(self.global_position)
 	player_movement(delta)
 	enemy_attack()
 	attack()
