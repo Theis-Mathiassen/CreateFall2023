@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccf4q3p3xpv83"
-path="res://.godot/imported/BackButton.png-9f420cc76c31abbf2502661436d3e2b7.ctex"
+uid="uid://crh05ssqswht2"
+path="res://.godot/imported/OutDoorScene.png-401746c5c5abb79f2e05232c7b80c66c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/Assets/BackButton.png"
-dest_files=["res://.godot/imported/BackButton.png-9f420cc76c31abbf2502661436d3e2b7.ctex"]
+source_file="res://World/Assets/OutDoorScene.png"
+dest_files=["res://.godot/imported/OutDoorScene.png-401746c5c5abb79f2e05232c7b80c66c.ctex"]
 
 [params]
 

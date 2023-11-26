@@ -14,10 +14,10 @@ script = ExtResource("1_kwy14")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 80.0
-offset_top = 26.0
-offset_right = 286.0
-offset_bottom = 110.0
+offset_left = 34.6667
+offset_top = 30.0
+offset_right = 240.667
+offset_bottom = 114.0
 scale = Vector2(1.5, 1.5)
 
 [node name="Label" type="Label" parent="Panel"]
@@ -32,6 +32,7 @@ vertical_alignment = 1
 script = ExtResource("1_yocck")
 
 [node name="Label2" type="Label" parent="Panel"]
+layout_mode = 0
 offset_left = 29.3333
 offset_top = 45.7778
 offset_right = 170.333
@@ -41,40 +42,40 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_g1d6n")
 
-[node name="Panel2" type="Panel" parent="."]
-offset_left = 42.6667
-offset_top = 186.667
-offset_right = 82.6667
-offset_bottom = 226.667
-
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="healthbar" type="ProgressBar" parent="."]
 modulate = Color(0.431373, 1, 0.0509804, 1)
-offset_left = 436.0
-offset_top = 19.3333
-offset_right = 927.0
-offset_bottom = 71.3333
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1485.33
+offset_top = 64.0
+offset_right = -994.333
+offset_bottom = 116.0
+grow_horizontal = 0
+pivot_offset = Vector2(245, 2.08165e-12)
 max_value = 10.0
 show_percentage = false
 script = ExtResource("2_vavlk")
 
 [node name="Time" type="Label" parent="."]
-offset_left = 662.0
-offset_top = 101.333
-offset_right = 702.0
-offset_bottom = 133.333
-theme_override_font_sizes/font_size = 40
+offset_left = 622.667
+offset_top = 141.333
+offset_right = 662.667
+offset_bottom = 224.333
+theme_override_font_sizes/font_size = 60
 
 [node name="Warning" type="Label" parent="."]
-offset_left = 232.0
-offset_top = 632.0
-offset_right = 1104.0
-offset_bottom = 670.0
+visible = false
+offset_left = 193.333
+offset_top = 630.667
+offset_right = 1067.33
+offset_bottom = 668.667
 theme_override_colors/font_color = Color(0.976471, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_kx8tb")
 theme_override_font_sizes/font_size = 30
-text = "Warning! Deposit the gold to the banker, or the city won't expand!"
+text = "Warning! Deposit the gold to the banker before the timer runs out!"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

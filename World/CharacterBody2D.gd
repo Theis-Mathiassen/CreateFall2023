@@ -41,6 +41,7 @@ func _physics_process(delta):
 		player_alive = false 
 		Global.player_health = 0
 		print("deadge")
+		get_tree().change_scene_to_file("res://World/GameOver.tscn")
 		# end screen
 
 func get_input():
