@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://qbsnniqv085h" path="res://World/standing_light.tscn" id="5_nbqpy"]
 [ext_resource type="PackedScene" uid="uid://b7d86ei0ty5an" path="res://UI/TopBar.tscn" id="8_pmftk"]
 [ext_resource type="PackedScene" uid="uid://mu8lkrp64hhk" path="res://bat.tscn" id="8_xiclq"]
-[ext_resource type="PackedScene" uid="uid://dyo8t3yepu4hg" path="res://Shared/Components/whiskey.tscn" id="10_et4ya"]
+[ext_resource type="PackedScene" path="res://Shared/Components/whiskey.tscn" id="10_et4ya"]
 [ext_resource type="Script" path="res://World/DoorToOutside.gd" id="11_1rg27"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jwjnr"]
@@ -239,7 +239,6 @@ script = ExtResource("11_1rg27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorToOutside"]
 position = Vector2(279.166, 543.891)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jkb68")
 
 [node name="Timer" type="Timer" parent="."]
