@@ -1,16 +1,17 @@
 extends Area2D
 
 
-var touching_player: bool
+var touching_player: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if (touching_player && Input.is_action_pressed("Interact")):
 		get_tree().change_scene_to_file("res://World/level_cave.tscn")
 	#print(touching_player)
