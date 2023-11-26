@@ -179,4 +179,4 @@ func update_health():
 		
 
 func _on_ready():
-	%TextureLight.set_texture_scale(Global.player_light_radius)
+	texture_light.set_texture_scale(Global.player_light_radius)

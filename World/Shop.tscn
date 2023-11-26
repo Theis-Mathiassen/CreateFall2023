@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfxeba51v5ui7"]
+[gd_scene load_steps=5 format=3 uid="uid://bfxeba51v5ui7"]
 
 [ext_resource type="Texture2D" uid="uid://cjih35afpacgk" path="res://World/Assets/StoreSign.png" id="1_jbaot"]
 [ext_resource type="Script" path="res://World/Shop.gd" id="1_wvrgs"]
 [ext_resource type="Texture2D" uid="uid://bb2enjb8xsfhx" path="res://UI/Assets/ShopBackground.png" id="2_donu8"]
+[ext_resource type="Texture2D" uid="uid://qulialt2e5cn" path="res://World/Assets/BackButton.png" id="4_fkke6"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -208,9 +209,18 @@ offset_right = 203.0
 offset_bottom = 80.0
 text = "800$"
 
+[node name="BackButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 1126.0
+offset_top = 21.0
+offset_right = 1254.0
+offset_bottom = 85.0
+texture_normal = ExtResource("4_fkke6")
+
 [connection signal="pressed" from="Control/Cowboy_boots" to="." method="_on_cowboy_boots_pressed"]
 [connection signal="pressed" from="Control/Cowboy_vest" to="." method="_on_cowboy_vest_pressed"]
 [connection signal="pressed" from="Control/Goldminers_pick" to="." method="_on_goldminers_pick_pressed"]
 [connection signal="pressed" from="Control/Fireflies" to="." method="_on_fireflies_pressed"]
 [connection signal="pressed" from="Control/Bullets" to="." method="_on_bullets_pressed"]
 [connection signal="pressed" from="Control/Sturdier_gun" to="." method="_on_sturdier_gun_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

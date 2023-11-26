@@ -66,3 +66,7 @@ func _on_bullets_pressed():
 func _on_sturdier_gun_pressed():
 	Global.upgrade_gun()
 	update_ui()
+
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_file("res://World/Town.tscn")
