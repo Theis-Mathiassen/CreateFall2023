@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d103gfmm60oko"]
+
+[ext_resource type="AudioStream" uid="uid://cbho5wtfhs1x3" path="res://Sound/Ambient/Music/chilldudeBOOSTED.mp3" id="1_kk4mo"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_kk4mo")
+autoplay = true
