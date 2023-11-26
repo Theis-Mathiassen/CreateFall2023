@@ -7,7 +7,6 @@ extends CharacterBody2D
 @export var friction = 700
 @export var player : Node2D
 
-@onready var drink = $Whiskey
 
 var player_chase = false
 var player_seen = false
