@@ -36,7 +36,7 @@ func _process(delta):
 func _on_button_button_down():
 	print("down")
 	
-	Global.seconds = 55
+	Global.seconds = 10
 	Global.minutes = 2
 	Global.total_player_gold = 0
 	Global.stage_count = 1

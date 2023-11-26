@@ -41,7 +41,7 @@ func _on_timer_timeout():
 			Global.gold_quota *= 1.2
 			Global.stage_count += 1
 			Global.minutes = 2
-			Global.seconds = 55
+			Global.seconds = 10
 		
 		
 	
