@@ -49,7 +49,7 @@ func _ready():
 			map_info[x].append(0)
 	# generate randomly seeded simplex noise map`
 	noise = FastNoiseLite.new()
-	noise.seed = 3#randi_range(0, 10000)
+	noise.seed = randi_range(0, 10000)
 	
 	GenMap()
 	draw_map()
