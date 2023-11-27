@@ -11,8 +11,8 @@ func _ready():
 		whiskey.queue_free()
 	if (Global.bat_killed):
 		bat.queue_free()
-	if (Global.gold_mined):
-		gold.queue_free()
+	gold.count = Global.start_gold_count
+	gold.decrease_gold_size(0)
 	Global.is_in_cave = false
 	print("IN CAVE?" + str(Global.recently_in_cave))
 	if Global.recently_in_cave == true:		
@@ -27,5 +27,5 @@ func _process(delta):
 		Global.whiskey_drunk = true
 	if (bat == null):
 		Global.bat_killed = true
-	if (gold == null):
-		Global.gold_mined = true
+	if (gold != null):
+		Global.start_gold_count = gold.count

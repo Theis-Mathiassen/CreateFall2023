@@ -10,6 +10,8 @@ size = Vector2(16, 24)
 
 [node name="Whiskey" type="Area2D"]
 scale = Vector2(0.3, 0.3)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_bp01i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

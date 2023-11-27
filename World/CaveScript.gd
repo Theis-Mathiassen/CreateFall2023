@@ -13,8 +13,8 @@ var grip = preload("res://grip.tscn")
 
 
 
-var border = 1
-var map_size = Vector2i(64, 64)
+var border = 10
+var map_size = Vector2i(84, 84)
 var map_info = []
 var room_index_map
 var tile_size
@@ -45,7 +45,7 @@ var total_time = 0
 var entrance = Vector2i(0,0)
 var number_gold = 7 + 7*0.2 * (Global.stage_count)
 var number_bats = 20 + 20*0.2 * (Global.stage_count)
-var number_dogs = 2 + 2 * max(Global.stage_count-1, 0)
+var number_dogs = 0 + 2 * max(Global.stage_count-1, 0)
 var number_grips = 0 + 1 * max(Global.stage_count-3, 0)
 var number_whiskey = 10 + 10*0.2 * (Global.stage_count)
 
@@ -53,6 +53,8 @@ var number_whiskey = 10 + 10*0.2 * (Global.stage_count)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(Global.stage_count)
+	print(number_bats)
 	Global.is_in_cave = true
 	tile_size = Vector2i(tiles.tile_set.tile_size.x, tiles.tile_set.tile_size.y)
 	
@@ -108,11 +110,15 @@ func GenMap ():
 	
 
 func draw_map():
+	
 	for x in map_size.x:
 		for y in map_size.y:
 			#Border
-			if x == 0 || x == map_size.x-1 || y == 0 || y == map_size.y-1:
-				tiles.set_cell(0,Vector2i(x,y),0, Vector2i(7+(x%2), y%2), 0)
+			if x < border || x >= map_size.x-border || y < border || y >= map_size.y-border:
+				if (x >= border-1 && x <= map_size.x-border) && (y >= border-1 && y <= map_size.y-border):
+					tiles.set_cell(0,Vector2i(x,y),0, Vector2i(7+(x%2), y%2), 0)
+				else:
+					tiles.set_cell(0,Vector2i(x,y),0, Vector2i(0, 5), 0)
 			else:
 				if (map_info[x][y] == 0):
 					if (map_info[x+1][y] == 0):
@@ -264,11 +270,11 @@ func expand_room(room_id_map, x, y, id):
 	if (tiles_in_rooms.max() == room_size):
 		largest_room = id
 		tiles_in_largest_room = tiles_in_room
-		entrance = Vector2i(x * tile_size.x,y*tile_size.y)
+		entrance = Vector2i(x * tile_size.x + tile_size.x/2,y*tile_size.y + tile_size.y/2)
 		for xi in map_size.x:
 			for yi in map_size.y:
 				if (room_id_map[xi][yi] == id && map_info[xi+1][yi] == 0 && map_info[xi-1][yi] == 0 && map_info[xi][yi+1] == 0 && map_info[xi][yi-1] == 0):
-					entrance = Vector2i(xi * tile_size.x,yi*tile_size.y)
+					entrance = Vector2i(xi * tile_size.x + tile_size.x/2,yi*tile_size.y + tile_size.y/2)
 					return
 	
 
@@ -279,7 +285,7 @@ func place_items():
 	for i in number_gold:
 		var loc = tiles_in_largest_room.pick_random()
 		var gold_instance = gold.instantiate()
-		gold_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
+		gold_instance.global_position = Vector2(loc.x * tile_size.x + tile_size.x/2,loc.y*tile_size.y + tile_size.y/2)
 		gold_instance.z_index = 90
 		%Gold_holder.add_child(gold_instance)
 		
@@ -287,7 +293,7 @@ func place_items():
 	for i in number_whiskey:
 		var loc = tiles_in_largest_room.pick_random()
 		var whiskey_instance = whiskey.instantiate()
-		whiskey_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
+		whiskey_instance.global_position = Vector2(loc.x * tile_size.x + tile_size.x/2,loc.y*tile_size.y + tile_size.y/2)
 		whiskey_instance.z_index = 90
 		%Gold_holder.add_child(whiskey_instance)
 	
@@ -297,7 +303,7 @@ func place_items():
 		var loc = tiles_in_largest_room.pick_random()
 		var bat_instance = bat.instantiate()
 		bat_instance.player = player
-		bat_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
+		bat_instance.global_position = Vector2(loc.x * tile_size.x + tile_size.x/2,loc.y*tile_size.y + tile_size.y/2)
 		add_child(bat_instance)
 		print("Bat")
 	
@@ -306,7 +312,7 @@ func place_items():
 		var loc = tiles_in_largest_room.pick_random()
 		var dog_instance = dog.instantiate()
 		dog_instance.player = player
-		dog_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
+		dog_instance.global_position = Vector2(loc.x * tile_size.x + tile_size.x/2,loc.y*tile_size.y + tile_size.y/2)
 		add_child(dog_instance)
 		print("Dog")
 	# Enemies
@@ -314,7 +320,7 @@ func place_items():
 		var loc = tiles_in_largest_room.pick_random()
 		var grip_instance = grip.instantiate()
 		grip_instance.player = player
-		grip_instance.global_position = Vector2(loc.x * tile_size.x,loc.y*tile_size.y)
+		grip_instance.global_position = Vector2(loc.x * tile_size.x + tile_size.x/2,loc.y*tile_size.y + tile_size.y/2)
 		add_child(grip_instance)
 		print("Grip")
 

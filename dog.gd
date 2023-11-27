@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-@export var health = 10
-@export var max_speed = 10
+@export var health = 15
+@export var max_speed = 15
 @export var acceleration = 15
 @export var friction = 700
 @export var player : Node2D
@@ -16,7 +16,8 @@ var player_in_attack_range = false
 
 
 func _physics_process(delta):
-	var dir = player.position - position
+	
+	var dir = (player.position + (player.velocity*1.5) - position)
 	
 	if player_chase :
 		velocity += dir*acceleration

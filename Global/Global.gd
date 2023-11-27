@@ -7,10 +7,10 @@ var player_health = 8
 var bullets = 10
 
 var bat_killed = false
-var gold_mined = false
+var start_gold_count = 100
 var whiskey_drunk = false
 
-var bullet_cost = 10
+var bullet_cost = 50
 var boots_upgrades = 0
 var boots_upgrade_costs = [300, 500, 800]
 var vest_upgrades = 0
@@ -22,10 +22,10 @@ var light_upgrade_costs = [300, 500, 800]
 var gun_upgrades = 0
 var gun_upgrade_costs = [300, 500, 800]
 
-var seconds = 55
-var minutes = 2
 var Dseconds = 0
-var DMinutes = 2
+var DMinutes = 3
+var seconds = Dseconds
+var minutes = DMinutes
 
 var gold_quota = 250
 var enemy_attack_damage = 1 * self.stage_count
@@ -39,7 +39,7 @@ func upgrade_boots():
 	if total_player_gold > boots_upgrade_costs[boots_upgrades]:
 		total_player_gold -= boots_upgrade_costs[boots_upgrades]
 		boots_upgrades += 1
-	player_max_speed = 40 + 40*self.boots_upgrades
+	player_max_speed = 35 + 10*self.boots_upgrades
 
 func upgrade_vest():
 	if (Global.vest_upgrades >= Global.vest_upgrade_costs.size()-1):
@@ -47,7 +47,7 @@ func upgrade_vest():
 	if total_player_gold > vest_upgrade_costs[vest_upgrades]:
 		total_player_gold -= vest_upgrade_costs[vest_upgrades]
 		vest_upgrades += 1
-	player_max_health = 8 + 2*self.vest_upgrades
+	player_max_health = 8 + 3*self.vest_upgrades
 
 func upgrade_pick():
 	if (Global.pick_upgrades >= Global.pick_upgrade_costs.size()-1):

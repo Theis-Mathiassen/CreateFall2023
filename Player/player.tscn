@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dr24s6rc63ylv"]
+[gd_scene load_steps=20 format=3 uid="uid://dr24s6rc63ylv"]
 
 [ext_resource type="Script" path="res://World/CharacterBody2D.gd" id="1_6ne0w"]
 [ext_resource type="Texture2D" uid="uid://c8qc3alcxxjd5" path="res://Player/moleidle.png" id="2_tn8dn"]
 [ext_resource type="Texture2D" uid="uid://byx5vle7427co" path="res://Player/running.png" id="3_46els"]
 [ext_resource type="Texture2D" uid="uid://dkhif70li5shs" path="res://Player/molerunningdown.png" id="4_mylji"]
+[ext_resource type="AudioStream" uid="uid://b4eu2h3ykajbh" path="res://Sound/Effects/Character/WalkingSoft.mp3" id="5_8sbsq"]
 [ext_resource type="Texture2D" uid="uid://d3owrb5lv2c5w" path="res://Player/molerunningup.png" id="5_wjjaa"]
 [ext_resource type="Texture2D" uid="uid://doi0i87n5e7qo" path="res://Player/mining.png" id="6_4epr6"]
 [ext_resource type="Texture2D" uid="uid://gh5b5tojl00g" path="res://UI/Assets/light_texture.png" id="7_wc7gq"]
@@ -219,6 +220,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_4hwr0"]
 resource_name = "Running"
+length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -267,9 +269,26 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Running")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_8sbsq")
+}],
+"times": PackedFloat32Array(-2.8)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_2itkc"]
 resource_name = "RunningDown"
+length = 0.8
+step = 0.16
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -313,14 +332,31 @@ tracks/3/path = NodePath("Icon:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Running")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_8sbsq")
+}],
+"times": PackedFloat32Array(-2.88)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_il130"]
 resource_name = "RunningUp"
+length = 0.8
+step = 0.16
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -364,11 +400,26 @@ tracks/3/path = NodePath("Icon:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.16, 0.32, 0.48, 0.64),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Running")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_8sbsq")
+}],
+"times": PackedFloat32Array(-4.96)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_frhjk"]
 _data = {
@@ -385,7 +436,7 @@ _data = {
 radius = 22.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sxrhy"]
-size = Vector2(7, 16.5)
+size = Vector2(14, 22)
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(-1, -2)
@@ -426,7 +477,7 @@ shape = SubResource("CircleShape2D_c8lhj")
 
 [node name="PickaxeCollision" type="CollisionShape2D" parent="RigidBody2D" groups=["Pickaxe"]]
 unique_name_in_owner = true
-position = Vector2(13.5, 7.75)
+position = Vector2(17, 5)
 shape = SubResource("RectangleShape2D_sxrhy")
 disabled = true
 
@@ -460,6 +511,8 @@ wait_time = 0.5
 
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="Running" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

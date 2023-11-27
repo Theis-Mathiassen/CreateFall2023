@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.text = "Collected " + str(Global.total_player_gold)
-	pass
+	self.text = "Collected " + str(round(Global.total_player_gold))
+	pass	
 
 

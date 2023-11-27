@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4e6akwqys4p7"]
+[gd_scene load_steps=18 format=3 uid="uid://c4e6akwqys4p7"]
 
 [ext_resource type="Script" path="res://World/level2.gd" id="1_4x3fb"]
 [ext_resource type="Texture2D" uid="uid://c5necl7bp4dqa" path="res://icon.svg" id="1_ni4hg"]
@@ -163,6 +163,8 @@ sources/0 = SubResource("TileSetAtlasSource_jwjnr")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkb68"]
 size = Vector2(42.0191, 122.977)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evr8a"]
+
 [node name="Main" type="Node2D"]
 scale = Vector2(0.999405, 1.0002)
 script = ExtResource("1_4x3fb")
@@ -249,6 +251,14 @@ texture = ExtResource("12_f2gb0")
 position = Vector2(425.253, 587.882)
 scale = Vector2(0.34991, 0.34991)
 texture = ExtResource("13_6nslk")
+
+[node name="Sign" type="Sprite2D" parent="."]
+position = Vector2(384.229, 573.885)
+
+[node name="Area2D" type="Area2D" parent="Sign"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sign/Area2D"]
+shape = SubResource("RectangleShape2D_evr8a")
 
 [connection signal="body_entered" from="DoorToOutside" to="DoorToOutside" method="_on_body_entered"]
 [connection signal="body_exited" from="DoorToOutside" to="DoorToOutside" method="_on_body_exited"]

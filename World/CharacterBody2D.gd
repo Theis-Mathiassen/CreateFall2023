@@ -14,7 +14,7 @@ extends CharacterBody2D
 #@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var marker_2d = $Marker2D
 @onready var pickaxe_collision = %PickaxeCollision
-@onready var texture_light = %TextureLight
+@onready var texture_light = $TextureLight
 @onready var shadow = $Shadow
 
 
@@ -32,7 +32,9 @@ var dynamite_equipped = true
 var dynamite_off_cooldown = true
 var dynamite = preload("res://Throwables/dynamite.tscn")
 
-
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
 
 func _physics_process(delta):
 	
@@ -97,9 +99,6 @@ func player_movement(delta):
 	if Input.is_action_just_released("Pickaxe"):
 		mining = false
 	
-	else:
-		pass
-		#running.stop()
 	
 	
 	# Stops our character
