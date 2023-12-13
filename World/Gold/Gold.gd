@@ -18,7 +18,9 @@ func _process(_delta):
 	if player != null:
 		if player.mining && touched_by_player:
 			animation_player.play("Destroyed")
-			decrease_gold_size(Global.player_attack_damage * 0.2)
+			var amount = Global.player_attack_damage * 20 * _delta
+			decrease_gold_size(amount)
+			Global.collect_gold(amount)
 			if count <= 0:
 				queue_free()
 
@@ -40,7 +42,6 @@ func _on_area_2d_body_exited(_body):
 
 func decrease_gold_size(amount):
 	count -= amount
-	Global.total_player_gold += amount
 	%Sprite2D.scale = Vector2(original_scale.x*(count/Start_count), original_scale.y*(count/Start_count))
 
 

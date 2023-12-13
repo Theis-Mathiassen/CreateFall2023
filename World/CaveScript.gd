@@ -53,9 +53,6 @@ var number_whiskey = 10 + 10*0.2 * (Global.stage_count)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(Global.stage_count)
-	print(number_bats)
-	Global.is_in_cave = true
 	tile_size = Vector2i(tiles.tile_set.tile_size.x, tiles.tile_set.tile_size.y)
 	
 	for x in range(map_size.x):
@@ -305,7 +302,6 @@ func place_items():
 		bat_instance.player = player
 		bat_instance.global_position = Vector2(loc.x * tile_size.x + tile_size.x/2,loc.y*tile_size.y + tile_size.y/2)
 		add_child(bat_instance)
-		print("Bat")
 	
 	# Enemies
 	for i in number_dogs:
@@ -314,7 +310,6 @@ func place_items():
 		dog_instance.player = player
 		dog_instance.global_position = Vector2(loc.x * tile_size.x + tile_size.x/2,loc.y*tile_size.y + tile_size.y/2)
 		add_child(dog_instance)
-		print("Dog")
 	# Enemies
 	for i in number_grips:
 		var loc = tiles_in_largest_room.pick_random()
@@ -322,5 +317,4 @@ func place_items():
 		grip_instance.player = player
 		grip_instance.global_position = Vector2(loc.x * tile_size.x + tile_size.x/2,loc.y*tile_size.y + tile_size.y/2)
 		add_child(grip_instance)
-		print("Grip")
 

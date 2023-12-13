@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Global.player_position = Global.position.shop
 	update_ui()
 	pass # Replace with function body.
 
@@ -16,23 +17,23 @@ func update_ui ():
 	if (Global.boots_upgrades >= Global.boots_upgrade_costs.size()-1):
 		$Control/Cowboy_boots/Label.text = "Max upgraded"
 	else:
-		$Control/Cowboy_boots/Label.text = "Lvl " + str(Global.boots_upgrades + 2) + ": " + str(Global.boots_upgrade_costs[(Global.boots_upgrades + 1)]) + "$"
+		$Control/Cowboy_boots/Label.text = "Lvl " + str(Global.boots_upgrades + 1) + ": " + str(Global.boots_upgrade_costs[(Global.boots_upgrades)]) + "$"
 	if (Global.vest_upgrades >= Global.vest_upgrade_costs.size()-1):
 		$Control/Cowboy_vest/Label.text = "Max upgraded"
 	else:
-		$Control/Cowboy_vest/Label.text = "Lvl " + str(Global.vest_upgrades + 2) + ": " + str(Global.vest_upgrade_costs[(Global.vest_upgrades + 1)]) + "$"
+		$Control/Cowboy_vest/Label.text = "Lvl " + str(Global.vest_upgrades + 1) + ": " + str(Global.vest_upgrade_costs[(Global.vest_upgrades)]) + "$"
 	if (Global.pick_upgrades >= Global.pick_upgrade_costs.size()-1):
 		$Control/Goldminers_pick/Label.text = "Max upgraded"
 	else:
-		$Control/Goldminers_pick/Label.text = "Lvl " + str(Global.pick_upgrades + 2) + ": " + str(Global.pick_upgrade_costs[(Global.pick_upgrades + 1)]) + "$"
+		$Control/Goldminers_pick/Label.text = "Lvl " + str(Global.pick_upgrades + 1) + ": " + str(Global.pick_upgrade_costs[(Global.pick_upgrades)]) + "$"
 	if (Global.light_upgrades >= Global.light_upgrade_costs.size()-1):
 		$Control/Fireflies/Label.text = "Max upgraded"
 	else:
-		$Control/Fireflies/Label.text = "Lvl " + str(Global.light_upgrades + 2) + ": " + str(Global.light_upgrade_costs[(Global.light_upgrades + 1)]) + "$"
+		$Control/Fireflies/Label.text = "Lvl " + str(Global.light_upgrades + 1) + ": " + str(Global.light_upgrade_costs[(Global.light_upgrades)]) + "$"
 	if (Global.gun_upgrades >= Global.gun_upgrade_costs.size()-1):
 		$Control/Sturdier_gun/Label.text = "Max upgraded"
 	else:
-		$Control/Sturdier_gun/Label.text = "Lvl " + str(Global.gun_upgrades + 2) + ": " + str(Global.gun_upgrade_costs[(Global.gun_upgrades + 1)]) + "$"
+		$Control/Sturdier_gun/Label.text = "Lvl " + str(Global.gun_upgrades + 1) + ": " + str(Global.gun_upgrade_costs[(Global.gun_upgrades)]) + "$"
 	
 	$Control/Bullets/Label.text = str(Global.bullet_cost) + "$"
 	

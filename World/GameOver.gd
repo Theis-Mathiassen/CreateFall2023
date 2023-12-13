@@ -39,13 +39,16 @@ func _on_button_button_down():
 	Global.seconds = 10
 	Global.minutes = 2
 	Global.total_player_gold = 0
+	Global.collected_since_quota = 0
 	Global.stage_count = 1
 	
 	Global.gold_quota = 250
 	Global.enemy_attack_damage = 1 * Global.stage_count
-	Global.recently_in_cave = false
-	Global.is_in_cave = false
 	
+	Global.start_gold_count = 100
+	Global.whiskey_drunk = false
+	Global.bat_killed = false
+	Global.player_position = Global.position.start
 	
 	
 	Global.player_current_attack = false

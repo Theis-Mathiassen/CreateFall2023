@@ -23,29 +23,23 @@ func Reset_Timer():
 	Global.minutes = Global.DMinutes
 
 
+
 func _on_timer_timeout():
+	if not Global.player_position == Global.position.cave:
+		return
 	if Global.seconds <= 0:
 		if Global.minutes > 0:
 			Global.seconds = 60
 			Global.minutes -= 1
 			
 			
-	if Global.minutes < 1:
+	if Global.minutes < 1 && (Global.collected_since_quota < Global.gold_quota || Global.player_position == Global.position.cave):
 		warning.visible = true
 	else:
 		warning.visible = false
 	
-	if Global.minutes <= 0 and Global.seconds <= 0:
-		if Global.total_player_gold < Global.gold_quota:
-			get_tree().change_scene_to_file("res://World/GameOver.tscn")
-		else:
-			Global.total_player_gold -= Global.gold_quota
-			Global.gold_quota *= 1.2
-			Global.stage_count += 1
-			var new_seconds = (Global.DMinutes * 60 + Global.Dseconds) + (Global.DMinutes * 60 + Global.Dseconds) * 0.2 * Global.stage_count
-			print(new_seconds)
-			Global.minutes = floor(new_seconds/60)
-			Global.seconds = int(floor(new_seconds)) % 60
+	if Global.minutes <= 0 and Global.seconds <= 0 and Global.player_position == Global.position.cave:
+		Global.quota_end()
 		
 		
 	

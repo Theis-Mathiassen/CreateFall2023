@@ -37,17 +37,14 @@ func _ready():
 	pass # Replace with function body.
 
 func _physics_process(delta):
-	
-	if Global.is_in_cave:
-
+	#print(global_position)
+	if Global.player_position == Global.position.cave:
 		shadow.visible = true
 	else:
-	
 		shadow.visible = false
 		
 	#print(self.global_position)
 	player_movement(delta)
-	enemy_attack()
 	attack()
 	update_health()
 	
@@ -151,9 +148,11 @@ func _on_player_hitbox_body_exited(body):
 	if body.has_method("enemy"):
 		enemy_in_attack_range = false
 
-func enemy_attack():
-	if enemy_in_attack_range and enemy_attack_cooldown == true:
-		Global.player_health = Global.player_health - Global.enemy_attack_damage
+func enemy_attack(damage):
+	print("Attack")
+	#if enemy_in_attack_range and enemy_attack_cooldown == true:
+	if enemy_attack_cooldown == true:
+		Global.player_health = Global.player_health - damage
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 

@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7d86ei0ty5an"]
+[gd_scene load_steps=9 format=3 uid="uid://b7d86ei0ty5an"]
 
 [ext_resource type="Script" path="res://UI/TopBar.gd" id="1_kwy14"]
 [ext_resource type="FontVariation" uid="uid://dyn3foi5ruqiw" path="res://Font/FontVariation.tres" id="1_kx8tb"]
 [ext_resource type="Script" path="res://UI/Label.gd" id="1_yocck"]
 [ext_resource type="Script" path="res://UI/healthbar.gd" id="2_vavlk"]
 [ext_resource type="Script" path="res://UI/Label2.gd" id="3_g1d6n"]
+[ext_resource type="Script" path="res://UI/Stage_count_label.gd" id="4_68add"]
+[ext_resource type="Script" path="res://UI/bullets_label.gd" id="4_rpdce"]
+[ext_resource type="Script" path="res://UI/FPS.gd" id="8_f2waq"]
 
 [node name="Node" type="CanvasLayer"]
 scale = Vector2(1.5, 1.5)
@@ -14,18 +17,18 @@ script = ExtResource("1_kwy14")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = 34.6667
-offset_top = 30.0
-offset_right = 240.667
-offset_bottom = 114.0
+offset_left = 17.3333
+offset_top = 12.6667
+offset_right = 223.333
+offset_bottom = 108.667
 scale = Vector2(1.5, 1.5)
 
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 9.77778
-offset_right = 169.0
-offset_bottom = 35.7778
+offset_left = 26.8889
+offset_top = -0.444446
+offset_right = 167.889
+offset_bottom = 25.5556
 text = "Gold"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -33,14 +36,36 @@ script = ExtResource("1_yocck")
 
 [node name="Label2" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 29.3333
-offset_top = 45.7778
-offset_right = 170.333
-offset_bottom = 71.7778
+offset_left = 30.0
+offset_top = 44.8889
+offset_right = 171.0
+offset_bottom = 70.8889
 text = "out of "
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("3_g1d6n")
+
+[node name="bullets" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 31.3333
+offset_top = 67.1111
+offset_right = 172.333
+offset_bottom = 93.1111
+text = "bullets"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_rpdce")
+
+[node name="Stage_count" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 28.2222
+offset_top = 21.7778
+offset_right = 169.222
+offset_bottom = 47.7778
+text = "Stage"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_68add")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
@@ -50,10 +75,10 @@ modulate = Color(0.431373, 1, 0.0509804, 1)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -1485.33
-offset_top = 64.0
-offset_right = -994.333
-offset_bottom = 116.0
+offset_left = -1486.67
+offset_top = 15.3333
+offset_right = -995.67
+offset_bottom = 67.3333
 grow_horizontal = 0
 pivot_offset = Vector2(245, 2.08165e-12)
 max_value = 10.0
@@ -69,16 +94,17 @@ theme_override_font_sizes/font_size = 60
 
 [node name="Warning" type="Label" parent="."]
 visible = false
-offset_left = 193.333
-offset_top = 630.667
-offset_right = 1067.33
-offset_bottom = 668.667
+offset_left = 159.333
+offset_top = 655.333
+offset_right = 1159.33
+offset_bottom = 693.333
 theme_override_colors/font_color = Color(0.976471, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_kx8tb")
 theme_override_font_sizes/font_size = 30
-text = "Warning! Make sure you meet the quota before the timer runs out!"
+text = "Warning! Make sure you meet the quota and escape before the mine collapse!"
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 1115.33
 offset_top = 523.333
 offset_right = 1263.33
@@ -90,5 +116,15 @@ E - Mine ore
 Q - Attack
 F - Interact
 LMB - Shoot"
+
+[node name="FPS" type="Label" parent="."]
+offset_left = 1123.33
+offset_top = 10.0
+offset_right = 1271.33
+offset_bottom = 185.0
+theme_override_fonts/font = ExtResource("1_kx8tb")
+theme_override_font_sizes/font_size = 27
+text = "FPS:"
+script = ExtResource("8_f2waq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

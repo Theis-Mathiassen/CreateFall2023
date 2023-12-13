@@ -14,7 +14,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	Global.recently_in_cave = true
 	if ready_to_enter and touching_player and Input.is_action_just_released("Interact"):
 		get_tree().change_scene_to_file("res://World/level_cave.tscn")
 	#print(touching_player)

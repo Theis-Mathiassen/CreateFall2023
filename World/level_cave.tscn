@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1dqw3xtaxufx"]
+[gd_scene load_steps=4 format=3 uid="uid://b1dqw3xtaxufx"]
 
 [ext_resource type="PackedScene" uid="uid://bn0rtg2d532cn" path="res://World/Cave.tscn" id="1_4b4l2"]
+[ext_resource type="Script" path="res://World/level_cave.gd" id="1_bb8hn"]
 [ext_resource type="PackedScene" uid="uid://b7d86ei0ty5an" path="res://UI/TopBar.tscn" id="2_7jjet"]
 
-[node name="Level3" type="Node2D"]
+[node name="Level_cave" type="Node2D"]
+script = ExtResource("1_bb8hn")
 
 [node name="Cave" parent="." instance=ExtResource("1_4b4l2")]
 

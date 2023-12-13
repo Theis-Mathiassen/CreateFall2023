@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqufma44ebh1q"]
+[gd_scene load_steps=7 format=3 uid="uid://bqufma44ebh1q"]
 
 [ext_resource type="Texture2D" uid="uid://bd03bb8sfhaib" path="res://UI/Assets/StartButton.png" id="1_1sueu"]
 [ext_resource type="Texture2D" uid="uid://bfol3crva52yb" path="res://UI/Assets/Background.png" id="1_bc4n8"]
+[ext_resource type="Script" path="res://UI/start_up.gd" id="1_gudbo"]
 [ext_resource type="Texture2D" uid="uid://dic8c7tlh6dgq" path="res://UI/Assets/ExitButton.png" id="2_f4550"]
 [ext_resource type="Script" path="res://UI/StartButton.gd" id="2_yt5mt"]
 [ext_resource type="Script" path="res://UI/ExitButton.gd" id="4_5vs0h"]
@@ -11,6 +12,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_gudbo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c72ibq0taeevp"]
+[gd_scene load_steps=12 format=3 uid="uid://c72ibq0taeevp"]
 
 [ext_resource type="Texture2D" uid="uid://c7fj1e54bls2w" path="res://World/Assets/PrairieDog.png" id="1_um62k"]
 [ext_resource type="Texture2D" uid="uid://c5hibu6xb2q6a" path="res://World/Assets/PrairieDogRun.png" id="2_u0sx2"]
 [ext_resource type="Script" path="res://dog.gd" id="3_fnlnd"]
+[ext_resource type="FontVariation" uid="uid://dyn3foi5ruqiw" path="res://Font/FontVariation.tres" id="4_2y0t0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sufbp"]
 atlas = ExtResource("1_um62k")
@@ -75,9 +76,24 @@ shape = SubResource("CircleShape2D_v2uc7")
 [node name="take_damage_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = -4.0
+offset_top = -21.0
+offset_right = 36.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_2y0t0")
+theme_override_font_sizes/font_size = 12
+text = "!"
+
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
 [connection signal="area_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="body_entered" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_entered"]
 [connection signal="body_exited" from="enemy_hitbox" to="." method="_on_enemy_hitbox_body_exited"]
 [connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_take_damage_cooldown_timeout"]

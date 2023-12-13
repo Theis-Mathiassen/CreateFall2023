@@ -10,8 +10,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (touching_player && Input.is_action_just_released("Interact")):
-		Global.seconds = 0
-		Global.minutes = 0
+		Global.quota_end()
 		get_tree().change_scene_to_file("res://World/level2.tscn")
 	#print(touching_player)
 

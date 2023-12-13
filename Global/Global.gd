@@ -1,7 +1,7 @@
 extends Node
 
 var stage_count = 1
-var total_player_gold = 0
+var total_player_gold = 300
 var player_current_attack = false
 var player_health = 8
 var bullets = 10
@@ -27,11 +27,40 @@ var DMinutes = 3
 var seconds = Dseconds
 var minutes = DMinutes
 
+var collected_since_quota = 0
 var gold_quota = 250
 var enemy_attack_damage = 1 * self.stage_count
-var recently_in_cave: bool = false
 
-var is_in_cave: bool = false
+
+enum difficulty {beginner, normal, hard, nightmare}
+var selected_difficulty = difficulty.normal
+
+enum position {shop, town, entrance, cave, start}
+var player_position = position.entrance
+
+
+
+func quota_end():
+	if Global.collected_since_quota < Global.gold_quota:
+		get_tree().change_scene_to_file("res://World/GameOver.tscn")
+	else:
+		Global.player_health = Global.player_max_health
+		Global.collected_since_quota = 0
+		Global.gold_quota *= 1.2
+		Global.stage_count += 1
+		var new_seconds = (Global.DMinutes * 60 + Global.Dseconds) + (Global.DMinutes * 60 + Global.Dseconds) * 0.2 * Global.stage_count
+		print(new_seconds)
+		Global.minutes = floor(new_seconds/60)
+		Global.seconds = int(floor(new_seconds)) % 60
+
+
+
+func is_tutorial_complete():
+	return true if bat_killed && start_gold_count == 0 && whiskey_drunk else false
+
+func collect_gold(amount):
+	collected_since_quota += amount
+	total_player_gold += amount
 
 func upgrade_boots():
 	if (Global.boots_upgrades >= Global.boots_upgrade_costs.size()-1):

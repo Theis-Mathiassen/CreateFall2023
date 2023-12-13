@@ -9,5 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	self.text = "out of " + str(Global.gold_quota) + " gold"
+	self.text = "Quota " + str(round(Global.collected_since_quota)) + "/" + str(round(Global.gold_quota)) + " gold"
 	pass
