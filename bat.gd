@@ -31,9 +31,10 @@ func _on_detection_area_body_exited(body):
 	velocity = Vector2.ZERO
 
 func _on_enemy_hitbox_area_entered(area):
+	print("Hit")
 	if area.has_method("bullet") : 
 		bullet_hit = true
-		#print("bullet = ", bullet_hit)
+		print("bullet = ", bullet_hit)
 
 func _on_enemy_hitbox_body_entered(body):
 	if body.has_method("player") : 

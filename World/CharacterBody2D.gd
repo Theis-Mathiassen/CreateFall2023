@@ -149,7 +149,6 @@ func _on_player_hitbox_body_exited(body):
 		enemy_in_attack_range = false
 
 func enemy_attack(damage):
-	print("Attack")
 	#if enemy_in_attack_range and enemy_attack_cooldown == true:
 	if enemy_attack_cooldown == true:
 		Global.player_health = Global.player_health - damage

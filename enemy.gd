@@ -37,9 +37,8 @@ func _physics_process(_delta: float) -> void:
 		
 	move_and_slide()
 	if (player_in_attack_range):
-		print(player_in_attack_range)
-		take_damage()
 		deal_damage()
+	take_damage()
 	#navAgent.set_target_position(player.position)
 	#var next = navAgent.get_next_path_position()
 	#var dir = to_local(next).normalized()
@@ -55,8 +54,8 @@ func _on_timer_timeout():
 	make_path()
 	
 
-func take_damage() :
-	if Global.player_current_attack == true :
+func take_damage():
+	if Global.player_current_attack == true and player_in_attack_range:
 		if can_take_damage:
 			health = health - Global.player_attack_damage
 			$take_damage_cooldown.start()
@@ -64,7 +63,7 @@ func take_damage() :
 			#print("Bat health = ", health)
 			if health <= 0:
 				self.queue_free()
-	elif bullet_hit :
+	elif bullet_hit:
 		if can_take_damage:
 			health = health - Global.player_bullet_damage
 			$take_damage_cooldown.start()

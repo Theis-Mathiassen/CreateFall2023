@@ -289,8 +289,8 @@ offset_left = 420.25
 offset_top = 535.893
 offset_right = 487.25
 offset_bottom = 577.893
-text = "Drink on
-Whiskey"
+text = "Drink Whiskey
+to heal up"
 metadata/_edit_use_anchors_ = true
 
 [node name="InteractLabel" type="Label" parent="."]

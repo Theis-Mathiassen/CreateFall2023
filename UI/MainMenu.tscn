@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bqufma44ebh1q"]
 
-[ext_resource type="Texture2D" uid="uid://bd03bb8sfhaib" path="res://UI/Assets/StartButton.png" id="1_1sueu"]
-[ext_resource type="Texture2D" uid="uid://bfol3crva52yb" path="res://UI/Assets/Background.png" id="1_bc4n8"]
 [ext_resource type="Script" path="res://UI/start_up.gd" id="1_gudbo"]
 [ext_resource type="Texture2D" uid="uid://dic8c7tlh6dgq" path="res://UI/Assets/ExitButton.png" id="2_f4550"]
+[ext_resource type="Texture2D" uid="uid://crh05ssqswht2" path="res://World/Assets/OutDoorScene.png" id="2_s38tk"]
 [ext_resource type="Script" path="res://UI/StartButton.gd" id="2_yt5mt"]
+[ext_resource type="Texture2D" uid="uid://bvs5yfalqab5n" path="res://UI/Assets/STARTGAME.png" id="3_foidx"]
 [ext_resource type="Script" path="res://UI/ExitButton.gd" id="4_5vs0h"]
 
 [node name="Control" type="Control"]
@@ -19,39 +19,44 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1112.0
-offset_bottom = 608.0
+offset_left = -80.0
+offset_right = 2039.0
+offset_bottom = 1039.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_bc4n8")
+texture = ExtResource("2_s38tk")
+expand_mode = 5
+stretch_mode = 4
 
 [node name="StartButton" type="TextureButton" parent="."]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 435.0
-offset_top = 270.0
-offset_right = 691.0
-offset_bottom = 398.0
+anchor_right = 31.503
+anchor_bottom = 17.883
+offset_left = 733.0
+offset_top = 512.0
+offset_right = 37.8799
+offset_bottom = 3.67993
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("1_1sueu")
+texture_normal = ExtResource("3_foidx")
+stretch_mode = 4
 script = ExtResource("2_yt5mt")
 
 [node name="ExitButton" type="TextureButton" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 436.0
-offset_top = 421.0
-offset_right = 692.0
-offset_bottom = 549.0
+anchor_right = 31.325
+anchor_bottom = 17.972
+offset_left = 876.0
+offset_top = 710.0
+offset_right = -101.0
+offset_bottom = 159.12
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("2_f4550")
